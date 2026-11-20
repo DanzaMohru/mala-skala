@@ -664,6 +664,45 @@
             cursor: pointer;
         }
 
+        /* HLAVNÍ ČLÁNEK (přes celou šířku, text vlevo a zápasy vpravo) */
+        .clanek-hlavni {
+            grid-column: 1 / -1;   /* roztáhne se přes všechny tři sloupce */
+            flex-direction: row;
+            gap: 30px;
+            border-top: 4px solid #dd221d;
+        }
+        .hlavni-text {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
+        .hlavni-zapasy {
+            flex: 2;
+            align-self: center;
+            background-color: #121316;
+            border: 1px solid #2a2d33;
+            border-radius: 12px;
+            padding: 4px 16px;
+        }
+        .hlavni-zapasy .zapas-radek:last-child {
+            border-bottom: none;
+        }
+        .stitek-pohar {
+            border: 1px solid #dd221d;
+            color: #dd221d;
+            white-space: nowrap;   /* nezalamovat na dva řádky */
+        }
+        .pohar {
+            color: #dd221d;
+            font-weight: bold;
+        }
+        .nas-zapas {
+            background-color: rgba(221, 34, 29, 0.12);
+            border-left: 3px solid #dd221d;
+            padding-left: 12px;
+            padding-right: 8px;
+        }
+
         /* VYSKAKOVACÍ OKNO */
         .okno {
             width: min(880px, 92vw);
@@ -1001,6 +1040,17 @@
             .clanek h3 {
                 font-size: 28px;
             }
+            .clanek-hlavni {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .clanek-znaky {
+                gap: 10px;
+            }
+            .clanek-znaky img {
+                width: 40px;
+                height: 40px;
+            }
 
             /* vyskakovací okno */
             .okno {
@@ -1193,7 +1243,7 @@
                 </div>
 
                 <div id="pristi">
-                    <p class="kolo">18. kolo • 7. liga VÝCHOD</p>
+                    <p class="kolo">Zimní MOL Cup • skupina E</p>
                     <div class="souperi">
                         <div class="tym">
                             <img src="logo.png" alt="Logo SK Malá Skála">
@@ -1201,11 +1251,11 @@
                         </div>
                         <div class="vs">VS</div>
                         <div class="tym">
-                            <img src="znaky/zeleznybrodB.png" alt="Znak FK Železný Brod">
-                            <span>Železný Brod B</span>
+                            <img src="znaky/turnovB.png" alt="Znak FK Turnov">
+                            <span>Turnov B</span>
                         </div>
                     </div>
-                    <p class="kdy">neděle 21. 3. 2027 • 15:00 • domácí hřiště</p>
+                    <p class="kdy">pátek 12. 2. 2027 • 19:15 • UMT Turnov</p>
                 </div>
 
                 <div id="posledni" class="skryty">
@@ -1231,9 +1281,52 @@
     <!-- AKTUALITY -->
     <section id="aktuality" class="sekce">
         <div class="obsah">
-            <p class="nadtitulek">Reporty ze zápasů áčka</p>
+            <p class="nadtitulek">Novinky a reporty áčka</p>
             <h2>Aktuality <span class="cervena">ze Skaly</span></h2>
             <div class="clanky">
+                <!-- HLAVNÍ ČLÁNEK PŘES CELOU ŠÍŘKU: ZIMNÍ POHÁR -->
+                <article class="clanek clanek-hlavni" onclick="otevri('clanek-pohar')">
+                    <div class="hlavni-text">
+                        <div class="clanek-znaky">
+                            <img src="logo.png" alt="">
+                            <span class="vysledek stitek-pohar">MOL Cup</span>
+                            <img src="znaky/turnovB.png" alt="">
+                            <img src="znaky/sedmihorky.png" alt="">
+                            <img src="znaky/sokolpencin.png" alt="">
+                        </div>
+                        <p class="clanek-meta">Zimní příprava • skupina E • UMT Turnov</p>
+                        <h3>Zimní MOL Cup: Skala vyzve dva celky z 5. ligy</h3>
+                        <p class="clanek-perex">Před startem jara nás čekají tři zápasy zimního MOL Cupu. Ve skupině E narazíme na Turnov B a na dva soupeře z 5. ligy, Sokol Pěnčín a Sedmihorky.</p>
+                        <button class="cist">Číst článek →</button>
+                    </div>
+                    <div class="hlavni-zapasy">
+                        <div class="zapas-radek">
+                            <img class="znak" src="znaky/turnovB.png" alt="">
+                            <div class="zapas-text">
+                                <p class="zapas-info">Pá 12. 2. • UMT Turnov</p>
+                                <p class="zapas-tymy">Malá Skála – Turnov B</p>
+                            </div>
+                            <span class="cas">19:15</span>
+                        </div>
+                        <div class="zapas-radek">
+                            <img class="znak" src="znaky/sedmihorky.png" alt="">
+                            <div class="zapas-text">
+                                <p class="zapas-info">So 20. 2. • UMT Turnov</p>
+                                <p class="zapas-tymy">Sedmihorky – Malá Skála</p>
+                            </div>
+                            <span class="cas">17:00</span>
+                        </div>
+                        <div class="zapas-radek">
+                            <img class="znak" src="znaky/sokolpencin.png" alt="">
+                            <div class="zapas-text">
+                                <p class="zapas-info">So 27. 2. • UMT Turnov</p>
+                                <p class="zapas-tymy">Sokol Pěnčín – Malá Skála</p>
+                            </div>
+                            <span class="cas">17:00</span>
+                        </div>
+                    </div>
+                </article>
+
                 <article class="clanek" onclick="otevri('clanek1')">
                     <div class="clanek-znaky">
                         <img src="logo.png" alt="">
@@ -1272,6 +1365,77 @@
     </section>
 
     <!-- VYSKAKOVACÍ OKNA S REPORTY -->
+
+    <!-- OKNO: ZIMNÍ POHÁR -->
+    <dialog id="clanek-pohar" class="okno">
+        <div class="okno-obsah">
+            <button class="zavrit" onclick="zavri('clanek-pohar')" aria-label="Zavřít">×</button>
+            <p class="clanek-meta">Zimní příprava • MOL Cup • skupina E</p>
+            <h3>Zimní MOL Cup: Skala vyzve dva celky z 5. ligy</h3>
+            <div class="prepinac">
+                <button id="tlacitko-pohar-clanek" class="zalozka aktivni" onclick="prepni('pohar-clanek', 'pohar-rozpis')">Článek</button>
+                <button id="tlacitko-pohar-rozpis" class="zalozka" onclick="prepni('pohar-rozpis', 'pohar-clanek')">Rozpis skupiny</button>
+            </div>
+            <div id="pohar-clanek" class="report">
+                <p class="uvod">Zimní pauza nebude dlouhá. Ještě před startem jara nás čekají tři zápasy zimního MOL Cupu a ve skupině E jsme dostali hodně těžký kalibr.</p>
+                <p>Vedle Turnova B, kterého dobře známe ze 7. ligy VÝCHOD a který je po podzimu v tabulce druhý, se utkáme se dvěma celky z 5. ligy: se Sokolem Pěnčín a se Sedmihorkami. Oba hrají o dvě soutěže výš než my, takže nás čeká pořádná prověrka před jarní částí.</p>
+                <p>Všechny zápasy skupiny se hrají na umělé trávě v Turnově. Začínáme v pátek 12. února večer proti Turnovu B, v sobotu 20. února nás čekají Sedmihorky a skupinu uzavřeme v sobotu 27. února proti Pěnčínu. Jaro v 7. lize pak odstartujeme v neděli 21. března doma proti Železnému Brodu B.</p>
+                <p>Přijďte nás podpořit i v zimě, do Turnova to není daleko.</p>
+                <div class="infobox">
+                    <strong>Soutěž:</strong> zimní MOL Cup, skupina E<br>
+                    <strong>Hřiště:</strong> UMT Turnov<br>
+                    <strong>Soupeři:</strong> Turnov B (7. liga), Sokol Pěnčín (5. liga), Sedmihorky (5. liga)<br>
+                    <strong>Naše zápasy:</strong> pá 12. 2. v 19:15 Turnov B, so 20. 2. v 17:00 Sedmihorky, so 27. 2. v 17:00 Pěnčín
+                </div>
+            </div>
+            <div id="pohar-rozpis" class="skryty">
+                <div class="zapas-radek nas-zapas">
+                    <div class="zapas-text">
+                        <p class="zapas-info">Pá 12. 2. 2027 • 2. kolo</p>
+                        <p class="zapas-tymy">Malá Skála – Turnov B</p>
+                    </div>
+                    <span class="cas">19:15</span>
+                </div>
+                <div class="zapas-radek">
+                    <div class="zapas-text">
+                        <p class="zapas-info">So 13. 2. 2027 • 2. kolo</p>
+                        <p class="zapas-tymy">Sedmihorky – Sokol Pěnčín</p>
+                    </div>
+                    <span class="cas">17:00</span>
+                </div>
+                <div class="zapas-radek">
+                    <div class="zapas-text">
+                        <p class="zapas-info">Pá 19. 2. 2027 • 1. kolo</p>
+                        <p class="zapas-tymy">Sokol Pěnčín – Turnov B</p>
+                    </div>
+                    <span class="cas">19:00</span>
+                </div>
+                <div class="zapas-radek nas-zapas">
+                    <div class="zapas-text">
+                        <p class="zapas-info">So 20. 2. 2027 • 1. kolo</p>
+                        <p class="zapas-tymy">Sedmihorky – Malá Skála</p>
+                    </div>
+                    <span class="cas">17:00</span>
+                </div>
+                <div class="zapas-radek nas-zapas">
+                    <div class="zapas-text">
+                        <p class="zapas-info">So 27. 2. 2027 • 3. kolo</p>
+                        <p class="zapas-tymy">Sokol Pěnčín – Malá Skála</p>
+                    </div>
+                    <span class="cas">17:00</span>
+                </div>
+                <div class="zapas-radek">
+                    <div class="zapas-text">
+                        <p class="zapas-info">So 27. 2. 2027 • 3. kolo</p>
+                        <p class="zapas-tymy">Turnov B – Sedmihorky</p>
+                    </div>
+                    <span class="cas">19:00</span>
+                </div>
+                <p class="poznamka">Všechny zápasy skupiny E se hrají na UMT Turnov. Naše zápasy jsou označené červeně.</p>
+                <a class="odkaz" href="https://www.fotbal.cz/souteze/turnaje/zapas/529fb36a-7ab4-4958-b765-2e450b9fec54" target="_blank">Rozpis a výsledky na fotbal.cz →</a>
+            </div>
+        </div>
+    </dialog>
     <dialog id="clanek1" class="okno">
         <div class="okno-obsah">
             <button class="zavrit" onclick="zavri('clanek1')" aria-label="Zavřít">×</button>
@@ -1639,6 +1803,30 @@
                     </div>
 
                     <div id="program">
+                        <div class="zapas-radek">
+                            <img class="znak" src="znaky/turnovB.png" alt="">
+                            <div class="zapas-text">
+                                <p class="zapas-info">Pá 12. 2. • <span class="pohar">MOL Cup</span> • UMT Turnov</p>
+                                <p class="zapas-tymy">Malá Skála – Turnov B</p>
+                            </div>
+                            <span class="cas">19:15</span>
+                        </div>
+                        <div class="zapas-radek">
+                            <img class="znak" src="znaky/sedmihorky.png" alt="">
+                            <div class="zapas-text">
+                                <p class="zapas-info">So 20. 2. • <span class="pohar">MOL Cup</span> • UMT Turnov</p>
+                                <p class="zapas-tymy">Sedmihorky – Malá Skála</p>
+                            </div>
+                            <span class="cas">17:00</span>
+                        </div>
+                        <div class="zapas-radek">
+                            <img class="znak" src="znaky/sokolpencin.png" alt="">
+                            <div class="zapas-text">
+                                <p class="zapas-info">So 27. 2. • <span class="pohar">MOL Cup</span> • UMT Turnov</p>
+                                <p class="zapas-tymy">Sokol Pěnčín – Malá Skála</p>
+                            </div>
+                            <span class="cas">17:00</span>
+                        </div>
                         <div class="zapas-radek">
                             <img class="znak" src="znaky/zeleznybrodB.png" alt="">
                             <div class="zapas-text">
