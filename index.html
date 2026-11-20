@@ -1230,9 +1230,9 @@
                     <a href="#zapasy" class="tlacitko tlacitko-tmave">Rozpis zápasů</a>
                 </div>
                 <div class="cisla">
-                    <div><strong>10.</strong><span>místo v tabulce</span></div>
-                    <div><strong>27:39</strong><span>skóre</span></div>
-                    <div><strong>16</strong><span>bodů</span></div>
+                    <div><strong id="nase-misto"></strong><span>místo v tabulce</span></div>
+                    <div><strong id="nase-skore"></strong><span>skóre</span></div>
+                    <div><strong id="nase-body"></strong><span>bodů</span></div>
                 </div>
             </div>
 
@@ -1242,37 +1242,9 @@
                     <button id="tlacitko-posledni" class="zalozka" onclick="prepni('posledni', 'pristi')">Poslední výsledek</button>
                 </div>
 
-                <div id="pristi">
-                    <p class="kolo">Zimní MOL Cup • skupina E</p>
-                    <div class="souperi">
-                        <div class="tym">
-                            <img src="logo.png" alt="Logo SK Malá Skála">
-                            <span>Malá Skála</span>
-                        </div>
-                        <div class="vs">VS</div>
-                        <div class="tym">
-                            <img src="znaky/turnovB.png" alt="Znak FK Turnov">
-                            <span>Turnov B</span>
-                        </div>
-                    </div>
-                    <p class="kdy">pátek 12. 2. 2027 • 19:15 • UMT Turnov</p>
-                </div>
-
-                <div id="posledni" class="skryty">
-                    <p class="kolo">1. kolo • 7. liga VÝCHOD</p>
-                    <div class="souperi">
-                        <div class="tym">
-                            <img src="znaky/sk-hodkovice-nad-mohelkou.png" alt="Znak SK Hodkovice nad Mohelkou">
-                            <span>Hodkovice</span>
-                        </div>
-                        <div class="skore">5:2</div>
-                        <div class="tym">
-                            <img src="logo.png" alt="Logo SK Malá Skála">
-                            <span>Malá Skála</span>
-                        </div>
-                    </div>
-                    <p class="kdy">sobota 7. 11. 2026 • 10:00 • Hodkovice nad Mohelkou</p>
-                </div>
+                <!-- obsah obou karet doplní JavaScript z data.js -->
+                <div id="pristi"></div>
+                <div id="posledni" class="skryty"></div>
             </div>
 
         </div>
@@ -1680,115 +1652,21 @@
                 <div class="panel panel-tabulka">
                     <h3>Tabulka</h3>
                     <table>
-                        <tr>
-                            <th>#</th>
-                            <th class="klub">Klub</th>
-                            <th>Z</th>
-                            <th>V</th>
-                            <th>R</th>
-                            <th>P</th>
-                            <th>Skóre</th>
-                            <th>B</th>
-                            <th>Forma</th>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td class="klub"><img class="znak" src="znaky/albrechtice.png" alt="">Albrechtice/<wbr>Jiřetín</td>
-                            <td>13</td><td>12</td><td>1</td><td>0</td>
-                            <td>45:11</td><td class="bod">37</td>
-                            <td><div class="forma"><span class="vyhra">V</span><span class="vyhra">V</span><span class="vyhra">V</span><span class="vyhra">V</span><span class="vyhra">V</span></div></td>
-                        </tr>
-                        <tr>
-                            <td>2.</td>
-                            <td class="klub"><img class="znak" src="znaky/turnovB.png" alt="">Turnov B</td>
-                            <td>13</td><td>10</td><td>0</td><td>3</td>
-                            <td>66:18</td><td class="bod">30</td>
-                            <td><div class="forma"><span class="vyhra">V</span><span class="vyhra">V</span><span class="vyhra">V</span><span class="prohra">P</span><span class="prohra">P</span></div></td>
-                        </tr>
-                        <tr>
-                            <td>3. <span class="nahoru">▲1</span></td>
-                            <td class="klub"><img class="znak" src="znaky/plavy.png" alt="">Plavy</td>
-                            <td>13</td><td>9</td><td>0</td><td>4</td>
-                            <td>42:24</td><td class="bod">27</td>
-                            <td><div class="forma"><span class="vyhra">V</span><span class="vyhra">V</span><span class="vyhra">V</span><span class="vyhra">V</span><span class="vyhra">V</span></div></td>
-                        </tr>
-                        <tr>
-                            <td>4. <span class="dolu">▼1</span></td>
-                            <td class="klub"><img class="znak" src="znaky/lucany.png" alt="">Lučany nad Nisou</td>
-                            <td>13</td><td>8</td><td>1</td><td>4</td>
-                            <td>40:31</td><td class="bod">25</td>
-                            <td><div class="forma"><span class="prohra">P</span><span class="prohra">P</span><span class="vyhra">V</span><span class="vyhra">V</span><span class="vyhra">V</span></div></td>
-                        </tr>
-                        <tr>
-                            <td>5.</td>
-                            <td class="klub"><img class="znak" src="znaky/zeleznybrodB.png" alt="">Železný Brod B</td>
-                            <td>13</td><td>8</td><td>0</td><td>5</td>
-                            <td>52:41</td><td class="bod">24</td>
-                            <td><div class="forma"><span class="vyhra">V</span><span class="prohra">P</span><span class="prohra">P</span><span class="prohra">P</span><span class="vyhra">V</span></div></td>
-                        </tr>
-                        <tr>
-                            <td>6.</td>
-                            <td class="klub"><img class="znak" src="znaky/smrzovka.png" alt="">Smržovka</td>
-                            <td>13</td><td>7</td><td>0</td><td>6</td>
-                            <td>38:30</td><td class="bod">21</td>
-                            <td><div class="forma"><span class="vyhra">V</span><span class="prohra">P</span><span class="prohra">P</span><span class="prohra">P</span><span class="vyhra">V</span></div></td>
-                        </tr>
-                        <tr>
-                            <td>7.</td>
-                            <td class="klub"><img class="znak" src="znaky/tj-jiskra-harrachov.png" alt="">Harrachov</td>
-                            <td>13</td><td>7</td><td>0</td><td>6</td>
-                            <td>32:27</td><td class="bod">21</td>
-                            <td><div class="forma"><span class="vyhra">V</span><span class="prohra">P</span><span class="vyhra">V</span><span class="vyhra">V</span><span class="vyhra">V</span></div></td>
-                        </tr>
-                        <tr>
-                            <td>8. <span class="nahoru">▲1</span></td>
-                            <td class="klub"><img class="znak" src="znaky/sk-hodkovice-nad-mohelkou.png" alt="">Hodkovice</td>
-                            <td>13</td><td>6</td><td>1</td><td>6</td>
-                            <td>28:28</td><td class="bod">19</td>
-                            <td><div class="forma"><span class="vyhra">V</span><span class="vyhra">V</span><span class="vyhra">V</span><span class="vyhra">V</span><span class="vyhra">V</span></div></td>
-                        </tr>
-                        <tr>
-                            <td>9. <span class="dolu">▼1</span></td>
-                            <td class="klub"><img class="znak" src="znaky/desna.png" alt="">Desná</td>
-                            <td>13</td><td>5</td><td>2</td><td>6</td>
-                            <td>19:30</td><td class="bod">17</td>
-                            <td><div class="forma"><span class="prohra">P</span><span class="vyhra">V</span><span class="prohra">P</span><span class="vyhra">V</span><span class="prohra">P</span></div></td>
-                        </tr>
-                        <tr class="nas-tym">
-                            <td>10.</td>
-                            <td class="klub"><img class="znak" src="logo.png" alt="">Malá Skála</td>
-                            <td>13</td><td>5</td><td>1</td><td>7</td>
-                            <td>27:39</td><td class="bod">16</td>
-                            <td><div class="forma"><span class="prohra">P</span><span class="vyhra">V</span><span class="prohra">P</span><span class="vyhra">V</span><span class="prohra">P</span></div></td>
-                        </tr>
-                        <tr>
-                            <td>11.</td>
-                            <td class="klub"><img class="znak" src="znaky/jilemnice.png" alt="">Jilemnice</td>
-                            <td>13</td><td>4</td><td>1</td><td>8</td>
-                            <td>24:43</td><td class="bod">13</td>
-                            <td><div class="forma"><span class="prohra">P</span><span class="prohra">P</span><span class="vyhra">V</span><span class="prohra">P</span><span class="prohra">P</span></div></td>
-                        </tr>
-                        <tr>
-                            <td>12.</td>
-                            <td class="klub"><img class="znak" src="znaky/jenisovice.png" alt="">Jenišovice</td>
-                            <td>13</td><td>2</td><td>2</td><td>9</td>
-                            <td>17:40</td><td class="bod">8</td>
-                            <td><div class="forma"><span class="prohra">P</span><span class="remiza">R</span><span class="prohra">P</span><span class="prohra">P</span><span class="prohra">P</span></div></td>
-                        </tr>
-                        <tr>
-                            <td>13.</td>
-                            <td class="klub"><img class="znak" src="znaky/rovensko.png" alt="">Rovensko pod Troskami</td>
-                            <td>13</td><td>1</td><td>2</td><td>10</td>
-                            <td>18:53</td><td class="bod">5</td>
-                            <td><div class="forma"><span class="prohra">P</span><span class="remiza">R</span><span class="prohra">P</span><span class="prohra">P</span><span class="prohra">P</span></div></td>
-                        </tr>
-                        <tr>
-                            <td>14.</td>
-                            <td class="klub"><img class="znak" src="znaky/pencinB.png" alt="">Pěnčín B</td>
-                            <td>13</td><td>1</td><td>1</td><td>11</td>
-                            <td>15:48</td><td class="bod">4</td>
-                            <td><div class="forma"><span class="prohra">P</span><span class="prohra">P</span><span class="prohra">P</span><span class="prohra">P</span><span class="prohra">P</span></div></td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th class="klub">Klub</th>
+                                <th>Z</th>
+                                <th>V</th>
+                                <th>R</th>
+                                <th>P</th>
+                                <th>Skóre</th>
+                                <th>B</th>
+                                <th>Forma</th>
+                            </tr>
+                        </thead>
+                        <!-- řádky tabulky doplní JavaScript z data.js -->
+                        <tbody id="tabulka-radky"></tbody>
                     </table>
                     <p class="poznamka">Forma: posledních pět zápasů, nejnovější vlevo. V výhra, R remíza, P prohra.</p>
                     <a class="odkaz" href="https://www.fotbal.cz/souteze/turnaje/hlavni/0ca536cd-8f38-4e0b-b412-e9cd75a0590f" target="_blank">Kompletní tabulka na fotbal.cz →</a>
@@ -1802,116 +1680,9 @@
                         <button id="tlacitko-vysledky" class="zalozka" onclick="prepni('vysledky', 'program')">Výsledky</button>
                     </div>
 
-                    <div id="program">
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/turnovB.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">Pá 12. 2. • <span class="pohar">MOL Cup</span> • UMT Turnov</p>
-                                <p class="zapas-tymy">Malá Skála – Turnov B</p>
-                            </div>
-                            <span class="cas">19:15</span>
-                        </div>
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/sedmihorky.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">So 20. 2. • <span class="pohar">MOL Cup</span> • UMT Turnov</p>
-                                <p class="zapas-tymy">Sedmihorky – Malá Skála</p>
-                            </div>
-                            <span class="cas">17:00</span>
-                        </div>
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/sokolpencin.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">So 27. 2. • <span class="pohar">MOL Cup</span> • UMT Turnov</p>
-                                <p class="zapas-tymy">Sokol Pěnčín – Malá Skála</p>
-                            </div>
-                            <span class="cas">17:00</span>
-                        </div>
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/zeleznybrodB.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">Ne 21. 3. • 18. kolo • doma</p>
-                                <p class="zapas-tymy">Malá Skála – Železný Brod B</p>
-                            </div>
-                            <span class="cas">15:00</span>
-                        </div>
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/plavy.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">So 27. 3. • 19. kolo • venku</p>
-                                <p class="zapas-tymy">Plavy – Malá Skála</p>
-                            </div>
-                            <span class="cas">15:30</span>
-                        </div>
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/desna.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">Ne 4. 4. • 20. kolo • doma</p>
-                                <p class="zapas-tymy">Malá Skála – Desná</p>
-                            </div>
-                            <span class="cas">16:30</span>
-                        </div>
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/jilemnice.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">So 10. 4. • 21. kolo • venku</p>
-                                <p class="zapas-tymy">Jilemnice – Malá Skála</p>
-                            </div>
-                            <span class="cas">16:30</span>
-                        </div>
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/jenisovice.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">Ne 18. 4. • 22. kolo • doma</p>
-                                <p class="zapas-tymy">Malá Skála – Jenišovice</p>
-                            </div>
-                            <span class="cas">17:00</span>
-                        </div>
-                    </div>
-
-                    <div id="vysledky" class="skryty">
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/sk-hodkovice-nad-mohelkou.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">So 7. 11. • 1. kolo • venku</p>
-                                <p class="zapas-tymy">Hodkovice – Malá Skála</p>
-                            </div>
-                            <span class="vysledek prohra">5:2</span>
-                        </div>
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/tj-jiskra-harrachov.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">Ne 1. 11. • 13. kolo • doma</p>
-                                <p class="zapas-tymy">Malá Skála – Harrachov</p>
-                            </div>
-                            <span class="vysledek vyhra">2:1</span>
-                        </div>
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/lucany.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">So 24. 10. • 12. kolo • venku</p>
-                                <p class="zapas-tymy">Lučany nad Nisou – Malá Skála</p>
-                            </div>
-                            <span class="vysledek prohra">2:0</span>
-                        </div>
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/pencinB.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">Ne 18. 10. • 11. kolo • venku</p>
-                                <p class="zapas-tymy">Pěnčín B – Malá Skála</p>
-                            </div>
-                            <span class="vysledek vyhra">2:4</span>
-                        </div>
-                        <div class="zapas-radek">
-                            <img class="znak" src="znaky/smrzovka.png" alt="">
-                            <div class="zapas-text">
-                                <p class="zapas-info">Ne 11. 10. • 10. kolo • doma</p>
-                                <p class="zapas-tymy">Malá Skála – Smržovka</p>
-                            </div>
-                            <span class="vysledek prohra">2:3</span>
-                        </div>
-                    </div>
-
+                    <!-- seznamy zápasů doplní JavaScript z data.js -->
+                    <div id="program"></div>
+                    <div id="vysledky" class="skryty"></div>
                     <a class="odkaz" href="https://www.fotbal.cz/souteze/turnaje/zapas/0ca536cd-8f38-4e0b-b412-e9cd75a0590f" target="_blank">Celý rozpis na fotbal.cz →</a>
                 </div>
 
@@ -2284,6 +2055,8 @@
         </div>
     </footer>
 
+    <!-- nejdřív se načtou data, pak skript, který z nich staví stránku -->
+    <script src="data.js"></script>
     <script>
         // MOBILNÍ MENU
         function menu() {
@@ -2358,6 +2131,218 @@
                 }
             });
         }
+
+
+        // =============================================================
+        //  STAVĚNÍ STRÁNKY Z DAT (data.js)
+        //  Tady se po kole nic měnit nemusí. Mění se jen data.js.
+        // =============================================================
+
+        // pomocník: náš tým má klubové logo, soupeř znak uvedený u zápasu
+        function znakTymu(tym, zapas) {
+            if (tym === nasTym) {
+                return "logo.png";
+            }
+            return zapas.znak;
+        }
+
+        // pomocník: "pátek" -> "Pá" (první písmeno velké + druhé písmeno)
+        function kratkyDen(den) {
+            return den.charAt(0).toUpperCase() + den.charAt(1);
+        }
+
+        // pomocník: "12. 2. 2027" -> "12. 2." (useknutí roku za poslední mezerou)
+        function bezRoku(datum) {
+            return datum.slice(0, datum.lastIndexOf(" "));
+        }
+
+        // pomocník: dopočítá výsledek z našeho pohledu -> "vyhra", "remiza", nebo "prohra"
+        function nasVysledek(zapas) {
+            var goly = zapas.skore.split(":");      // "5:2" -> ["5", "2"]
+            var golyDomaci = Number(goly[0]);       // text "5" -> číslo 5
+            var golyHoste = Number(goly[1]);
+
+            var nase = golyHoste;                   // výchozí stav: hráli jsme venku
+            var souper = golyDomaci;
+            if (zapas.domaci === nasTym) {          // ...ale když jsme domácí, je to obráceně
+                nase = golyDomaci;
+                souper = golyHoste;
+            }
+
+            if (nase > souper) {
+                return "vyhra";
+            }
+            if (nase === souper) {
+                return "remiza";
+            }
+            return "prohra";
+        }
+
+        // TABULKA: projde všechny kluby a z každého udělá jeden řádek
+        function vykresliTabulku() {
+            var html = "";
+
+            for (var i = 0; i < tabulka.length; i++) {
+                var t = tabulka[i];
+                var misto = i + 1;                  // seznam se čísluje od nuly, tabulka od jedničky
+
+                if (t.klub === nasTym) {
+                    html += '<tr class="nas-tym">';
+                    // náš řádek zároveň vyplní čísla v úvodu stránky
+                    document.getElementById("nase-misto").innerText = misto + ".";
+                    document.getElementById("nase-skore").innerText = t.skore;
+                    document.getElementById("nase-body").innerText = t.body;
+                } else {
+                    html += "<tr>";
+                }
+
+                // místo a šipka posunu
+                var sipka = "";
+                if (t.zmena > 0) {
+                    sipka = ' <span class="nahoru">▲' + t.zmena + "</span>";
+                }
+                if (t.zmena < 0) {
+                    sipka = ' <span class="dolu">▼' + (-t.zmena) + "</span>";
+                }
+                html += "<td>" + misto + "." + sipka + "</td>";
+
+                // klub se znakem (za lomítkem se na mobilu smí zalomit řádek)
+                html += '<td class="klub"><img class="znak" src="' + t.znak + '" alt="">' + t.klub.replace("/", "/<wbr>") + "</td>";
+                html += "<td>" + t.z + "</td><td>" + t.v + "</td><td>" + t.r + "</td><td>" + t.p + "</td>";
+                html += "<td>" + t.skore + '</td><td class="bod">' + t.body + "</td>";
+
+                // forma: z textu "VVVPP" udělá pět barevných čtverečků
+                html += '<td><div class="forma">';
+                for (var j = 0; j < t.forma.length; j++) {
+                    var pismeno = t.forma.charAt(j);
+                    var trida = "prohra";
+                    if (pismeno === "V") {
+                        trida = "vyhra";
+                    }
+                    if (pismeno === "R") {
+                        trida = "remiza";
+                    }
+                    html += '<span class="' + trida + '">' + pismeno + "</span>";
+                }
+                html += "</div></td></tr>";
+            }
+
+            document.getElementById("tabulka-radky").innerHTML = html;
+        }
+
+        // ZÁPASY: jeden řádek v programu nebo ve výsledcích
+        // "vpravo" je to, co se ukáže úplně vpravo: čas výkopu, nebo skóre
+        function radekZapasu(zapas, vpravo) {
+            var stitek = zapas.kolo;
+            if (zapas.pohar) {
+                stitek = '<span class="pohar">' + zapas.kolo + "</span>";
+            }
+
+            return '<div class="zapas-radek">' +
+                       '<img class="znak" src="' + zapas.znak + '" alt="">' +
+                       '<div class="zapas-text">' +
+                           '<p class="zapas-info">' + kratkyDen(zapas.den) + " " + bezRoku(zapas.datum) + " • " + stitek + " • " + zapas.misto + "</p>" +
+                           '<p class="zapas-tymy">' + zapas.domaci + " – " + zapas.hoste + "</p>" +
+                       "</div>" +
+                       vpravo +
+                   "</div>";
+        }
+
+        // DATUM: z textu "12. 2. 2027" udělá datum, se kterým umí JavaScript počítat
+        function prevedDatum(text) {
+            var cisla = text.match(/\d+/g);        // vytáhne z textu všechna čísla -> ["12", "2", "2027"]
+            var den = Number(cisla[0]);
+            var mesic = Number(cisla[1]) - 1;      // pozor: JavaScript počítá měsíce od nuly (leden = 0)
+            var rok = Number(cisla[2]);
+            return new Date(rok, mesic, den);
+        }
+
+        // do kdy se má zápas v programu ukazovat:
+        // do půlnoci z neděle na pondělí v týdnu, kdy se hraje
+        function konecTydne(zapas) {
+            var datum = prevedDatum(zapas.datum);
+            var denVTydnu = datum.getDay();        // 0 = neděle, 1 = pondělí, ... 6 = sobota
+            var doPondeli = 8 - denVTydnu;         // kolik dní zbývá do dalšího pondělí
+            if (denVTydnu === 0) {
+                doPondeli = 1;                     // z neděle je to do pondělí jen jeden den
+            }
+            return new Date(datum.getFullYear(), datum.getMonth(), datum.getDate() + doPondeli);
+        }
+
+        // vybere z programu jen zápasy, jejichž týden ještě neskončil
+        function nadchazejiciZapasy() {
+            var ted = new Date();                  // dnešní datum a čas na zařízení návštěvníka
+            var vybrane = [];
+            for (var i = 0; i < program.length; i++) {
+                if (ted < konecTydne(program[i])) {
+                    vybrane.push(program[i]);      // push = přidej na konec seznamu
+                }
+            }
+            return vybrane;
+        }
+
+        // seznam zápasů, které se opravdu ukážou (odehrané týdny jsou pryč)
+        var nadchazejici = nadchazejiciZapasy();
+
+        function vykresliZapasy() {
+            var html = "";
+            for (var i = 0; i < nadchazejici.length; i++) {
+                html += radekZapasu(nadchazejici[i], '<span class="cas">' + nadchazejici[i].cas + "</span>");
+            }
+            if (nadchazejici.length === 0) {
+                html = '<p class="poznamka">Další zápasy zatím nejsou v programu.</p>';
+            }
+            document.getElementById("program").innerHTML = html;
+
+            html = "";
+            for (var k = 0; k < vysledky.length; k++) {
+                var z = vysledky[k];
+                html += radekZapasu(z, '<span class="vysledek ' + nasVysledek(z) + '">' + z.skore + "</span>");
+            }
+            document.getElementById("vysledky").innerHTML = html;
+        }
+
+        // ÚVOD: velká karta zápasu
+        // "uprostred" je to, co je mezi znaky: nápis VS, nebo skóre
+        function kartaZapasu(zapas, uprostred) {
+            var misto = zapas.misto;
+            if (misto === "doma") {
+                misto = "domácí hřiště";
+            }
+
+            var kdy = zapas.den + " " + zapas.datum;
+            if (zapas.cas !== "") {
+                kdy += " • " + zapas.cas;
+            }
+            kdy += " • " + misto;
+
+            return '<p class="kolo">' + zapas.kolo + " • " + zapas.soutez + "</p>" +
+                   '<div class="souperi">' +
+                       '<div class="tym"><img src="' + znakTymu(zapas.domaci, zapas) + '" alt="Znak ' + zapas.domaci + '"><span>' + zapas.domaci + "</span></div>" +
+                       uprostred +
+                       '<div class="tym"><img src="' + znakTymu(zapas.hoste, zapas) + '" alt="Znak ' + zapas.hoste + '"><span>' + zapas.hoste + "</span></div>" +
+                   "</div>" +
+                   '<p class="kdy">' + kdy + "</p>";
+        }
+
+        function vykresliUvod() {
+            // příští zápas = první zápas, jehož týden ještě neskončil
+            if (nadchazejici.length > 0) {
+                document.getElementById("pristi").innerHTML = kartaZapasu(nadchazejici[0], '<div class="vs">VS</div>');
+            } else {
+                document.getElementById("pristi").innerHTML = '<p class="kdy">Další zápasy zatím nejsou v programu.</p>';
+            }
+
+            // poslední výsledek = první zápas ve výsledcích
+            if (vysledky.length > 0) {
+                document.getElementById("posledni").innerHTML = kartaZapasu(vysledky[0], '<div class="skore">' + vysledky[0].skore + "</div>");
+            }
+        }
+
+        // a teď to všechno spustíme
+        vykresliTabulku();
+        vykresliZapasy();
+        vykresliUvod();
     </script>
 
 </body>
