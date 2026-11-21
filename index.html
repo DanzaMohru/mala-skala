@@ -51,11 +51,11 @@ layout: zaklad
                         <p class="clanek-meta">{% include clanek-meta.html clanek=c %}</p>
                         <h3>{{ c.title }}</h3>
                         <p class="clanek-perex">{{ c.perex }}</p>
-                        <span class="cist">{% if c.zapas and c.zapas.souper %}Číst report{% else %}Číst článek{% endif %} →</span>
+                        <span class="cist">{% if c.zapas.souper and c.zapas.souper != "" %}Číst report{% else %}Číst článek{% endif %} →</span>
                     </div>
-{%- if c.foto %}
+{%- if c.foto and c.foto != "" %}
                     <div class="hlavni-foto"><img src="{{ c.foto | relative_url }}" alt="{{ c.foto_popis | default: c.title | escape }}"></div>
-{%- elsif c.zapas and c.zapas.souper %}
+{%- elsif c.zapas.souper and c.zapas.souper != "" %}
                     {%- assign nase = c.zapas.nase_goly | default: 0 -%}
                     {%- assign jejich = c.zapas.goly_soupere | default: 0 -%}
                     {%- if nase > jejich %}{% assign barva = "vyhra" %}{% elsif nase == jejich %}{% assign barva = "remiza" %}{% else %}{% assign barva = "prohra" %}{% endif %}
@@ -157,7 +157,7 @@ layout: zaklad
 {%- endif %}
                     </div>
 {%- if zlute > 0 or cervene > 0 %}
-                    <p class="karty">{% if zlute > 0 %}<span class="zluta"></span>{{ zlute }}{% endif %}{% if zlute > 0 and cervene > 0 %} {% endif %}{% if cervene > 0 %}<span class="cervena-karta"></span>{{ cervene }}{% endif %}</p>
+                    <p class="karty">{% if zlute > 0 %}<span class="zluta"></span>{{ zlute }}{% if cervene > 0 %} {{ "" }}{% endif %}{% endif %}{% if cervene > 0 %}<span class="cervena-karta"></span>{{ cervene }}{% endif %}</p>
 {%- endif %}
                 </div>
 {%- endfor %}

@@ -4,12 +4,12 @@
 {%- assign c = include.clanek -%}
 <div class="clanek-znaky">
     <img src="{{ '/logo.png' | relative_url }}" alt="">
-{%- if c.zapas and c.zapas.souper %}
+{%- if c.zapas.souper and c.zapas.souper != "" %}
     {%- assign nase = c.zapas.nase_goly | default: 0 -%}
     {%- assign jejich = c.zapas.goly_soupere | default: 0 -%}
     {%- if nase > jejich %}{% assign barva = "vyhra" %}{% elsif nase == jejich %}{% assign barva = "remiza" %}{% else %}{% assign barva = "prohra" %}{% endif %}
     <span class="vysledek {{ barva }}">{{ nase }}:{{ jejich }}</span>
-    {%- if c.zapas.znak %}
+    {%- if c.zapas.znak and c.zapas.znak != "" %}
     <img src="{{ c.zapas.znak | relative_url }}" alt="">
     {%- endif %}
 {%- endif %}

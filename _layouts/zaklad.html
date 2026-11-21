@@ -25,7 +25,7 @@
     <meta property="og:title" content="{{ titulek_sdileni | escape }}">
     <meta property="og:description" content="{{ popis | escape }}">
     <meta property="og:url" content="{{ page.url | absolute_url }}">
-{%- if page.foto %}
+{%- if page.foto and page.foto != "" %}
     <meta property="og:image" content="{{ page.foto | absolute_url }}">
 {%- else %}
     <meta property="og:image" content="{{ '/sdileni.jpg' | absolute_url }}">

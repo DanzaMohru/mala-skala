@@ -11,7 +11,7 @@ layout: zaklad
             <p class="clanek-meta">{% include clanek-meta.html clanek=page %}</p>
             <h1 class="clanek-titulek">{{ page.title }}</h1>
 
-{%- if page.zapas and page.zapas.souper %}
+{%- if page.zapas.souper and page.zapas.souper != "" %}
 {%- assign z = page.zapas %}
 {%- assign nase = z.nase_goly | default: 0 %}
 {%- assign jejich = z.goly_soupere | default: 0 %}
@@ -34,10 +34,10 @@ layout: zaklad
             </div>
 {%- endif %}
 
-{%- if page.foto %}
+{%- if page.foto and page.foto != "" %}
             <figure class="clanek-foto">
                 <img src="{{ page.foto | relative_url }}" alt="{{ page.foto_popis | default: page.title | escape }}">
-{%- if page.foto_popis %}
+{%- if page.foto_popis and page.foto_popis != "" %}
                 <figcaption>{{ page.foto_popis }}</figcaption>
 {%- endif %}
             </figure>
@@ -53,7 +53,8 @@ layout: zaklad
 {%- endif %}
             </div>
 
-{%- if page.sestava_skala or page.sestava_souper %}
+{%- assign sestavy_text = page.sestava_skala | append: page.sestava_souper | strip %}
+{%- if sestavy_text != "" %}
             <h2 class="nadpis-sestavy">Sestavy</h2>
             <div class="sestavy-text">
                 <div>
@@ -65,7 +66,7 @@ layout: zaklad
                     <p>{{ page.sestava_souper | escape | newline_to_br }}</p>
                 </div>
             </div>
-{%- elsif page.sestavy_html %}
+{%- elsif page.sestavy_html and page.sestavy_html != "" %}
             <h2 class="nadpis-sestavy">Sestavy</h2>
             {{ page.sestavy_html }}
 {%- endif %}

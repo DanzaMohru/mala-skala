@@ -9,5 +9,5 @@
 {%- assign dny = "Ne,Po,Út,St,Čt,Pá,So" | split: "," -%}
 {%- assign w = c.date | date: "%w" | plus: 0 -%}
 {{ dny[w] }} {{ c.date | date: "%-d. %-m." }}
-{%- if c.zapas and c.zapas.souper %} • {{ c.zapas.kolo }} • {% if c.zapas.doma %}doma{% else %}venku{% endif %}{% endif -%}
+{%- if c.zapas.souper and c.zapas.souper != "" %}{% if c.zapas.kolo and c.zapas.kolo != "" %} • {{ c.zapas.kolo }}{% endif %} • {% if c.zapas.doma %}doma{% else %}venku{% endif %}{% endif -%}
 {%- endif -%}

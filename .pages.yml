@@ -1,0 +1,358 @@
+# =====================================================================
+#  ADMINISTRACE WEBU SK MALÁ SKÁLA (Pages CMS, app.pagescms.org)
+#  Tenhle soubor říká administraci, jaké formuláře má ukázat.
+#  Správci obsahu ho nevidí a nemohou ho měnit.
+# =====================================================================
+
+media:
+  - name: fotky
+    label: Fotky
+    input: fotky
+    output: /fotky
+    categories: [image]
+    rename: safe
+  - name: znaky
+    label: Znaky klubů
+    input: znaky
+    output: /znaky
+    categories: [image]
+    rename: safe
+
+content:
+
+  # ------------------------------------------------------------------
+  - name: clanky
+    label: Články a reporty
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Titulek
+        type: string
+        required: true
+        description: "U reportu ve tvaru Skala – Soupeř 2:1 (naše góly první)."
+      - name: date
+        label: Datum
+        type: date
+        required: true
+        description: "U reportu datum zápasu. Nejnovější článek se na hlavní stránce ukáže nahoře přes celou šířku."
+      - name: perex
+        label: Perex
+        type: text
+        required: true
+        description: "Krátký tučný úvod (1–2 věty). Ukáže se na kartě v aktualitách i při sdílení na Facebooku."
+      - name: foto
+        label: Hlavní fotka
+        type: image
+        options:
+          media: fotky
+        description: "Nepovinné. Fotka nad textem a na kartě článku."
+      - name: foto_popis
+        label: Popisek fotky
+        type: string
+        description: "Nepovinné. Co je na fotce, případně kdo ji vyfotil."
+      - name: stitek
+        label: Štítek nad titulkem
+        type: string
+        description: "Nepovinné. U reportu se doplní sám (den, kolo, doma/venku). Jinak třeba: Zimní příprava."
+      - name: zapas
+        label: Zápas (vyplň jen u reportu)
+        type: object
+        fields:
+          - name: souper
+            label: Soupeř
+            type: string
+            description: "Krátký název, např. Harrachov. Když je prázdné, článek se bere jako běžná novinka."
+          - name: znak
+            label: Znak soupeře
+            type: image
+            options:
+              media: znaky
+          - name: doma
+            label: Hráli jsme doma
+            type: boolean
+          - name: nase_goly
+            label: Naše góly
+            type: number
+          - name: goly_soupere
+            label: Góly soupeře
+            type: number
+          - name: kolo
+            label: Kolo
+            type: string
+            description: "Např. 14. kolo nebo MOL Cup."
+      - name: body
+        label: Text článku
+        type: rich-text
+        options:
+          media: fotky
+        description: "Hlavní text. Mezititulky přes tlačítko nadpisu, fotky jde vložit i do textu."
+      - name: infobox
+        label: Infobox
+        type: text
+        description: "Každý údaj na nový řádek ve tvaru Popis: hodnota. Např. Branky: 53. Plhal (pen.) – 25. Urban, Rozhodčí: Lukáš Nagy, Diváci: 50."
+      - name: sestava_skala
+        label: Sestava Skaly
+        type: text
+        description: "Nepovinné. Např. Mohr – Rác, Konečný, Krejčí, Šilhán – Kotrba, Matějíček, Pařík, Pešek – Plátek, Plhal. Střídali: Vít, Stránský."
+      - name: sestava_souper
+        label: Sestava soupeře
+        type: text
+        description: "Nepovinné. Stejný formát jako u Skaly."
+      - name: sestavy_html
+        label: Podrobné sestavy (starší reporty)
+        type: code
+        hidden: true
+
+  # ------------------------------------------------------------------
+  - name: program
+    label: Program zápasů
+    type: file
+    path: _data/program.json
+    format: json
+    list: true
+    description: "Nadcházející zápasy, nejbližší nahoře. Odehraný zápas web sám schová v pondělí po zápase. Pak ho přidej do Výsledků a odsud smaž."
+    fields:
+      - name: datum
+        label: Datum
+        type: date
+        required: true
+      - name: cas
+        label: Čas výkopu
+        type: string
+        description: "Např. 15:30"
+      - name: kolo
+        label: Kolo
+        type: string
+        description: "Např. 18. kolo nebo MOL Cup"
+      - name: soutez
+        label: Soutěž
+        type: string
+        description: "Např. 7. liga VÝCHOD nebo skupina E"
+      - name: souper
+        label: Soupeř
+        type: string
+        required: true
+      - name: znak
+        label: Znak soupeře
+        type: image
+        options:
+          media: znaky
+      - name: doma
+        label: Hrajeme doma
+        type: boolean
+      - name: misto
+        label: Hřiště
+        type: string
+        description: "Nepovinné. Vyplň jen u zápasu na jiném hřišti, např. UMT Turnov."
+      - name: pohar
+        label: Pohárový nebo přípravný zápas
+        type: boolean
+
+  # ------------------------------------------------------------------
+  - name: vysledky
+    label: Výsledky
+    type: file
+    path: _data/vysledky.json
+    format: json
+    list: true
+    description: "Odehrané zápasy, nejnovější nahoře. První zápas se ukáže v úvodu jako Poslední výsledek. Na webu se ukazuje pět nejnovějších, starší můžeš smazat."
+    fields:
+      - name: datum
+        label: Datum
+        type: date
+        required: true
+      - name: cas
+        label: Čas výkopu
+        type: string
+      - name: kolo
+        label: Kolo
+        type: string
+      - name: soutez
+        label: Soutěž
+        type: string
+      - name: souper
+        label: Soupeř
+        type: string
+        required: true
+      - name: znak
+        label: Znak soupeře
+        type: image
+        options:
+          media: znaky
+      - name: doma
+        label: Hráli jsme doma
+        type: boolean
+      - name: nase_goly
+        label: Naše góly
+        type: number
+        required: true
+      - name: goly_soupere
+        label: Góly soupeře
+        type: number
+        required: true
+      - name: misto
+        label: Hřiště
+        type: string
+        description: "Nepovinné, jen u zápasu na jiném hřišti."
+      - name: pohar
+        label: Pohárový nebo přípravný zápas
+        type: boolean
+
+  # ------------------------------------------------------------------
+  - name: tabulka
+    label: Tabulka 7. ligy
+    type: file
+    path: _data/tabulka.json
+    format: json
+    list: true
+    description: "Kluby v pořadí od prvního místa. Číslo místa se dopočítá samo. Údaje opiš z fotbal.cz."
+    fields:
+      - name: klub
+        label: Klub
+        type: string
+        required: true
+        description: "Náš klub musí být napsaný přesně Malá Skála, jinak se nezvýrazní."
+      - name: znak
+        label: Znak
+        type: image
+        options:
+          media: znaky
+      - name: z
+        label: Zápasy
+        type: number
+      - name: v
+        label: Výhry
+        type: number
+      - name: r
+        label: Remízy
+        type: number
+      - name: p
+        label: Prohry
+        type: number
+      - name: skore
+        label: Skóre
+        type: string
+        description: "Např. 45:11"
+      - name: body
+        label: Body
+        type: number
+      - name: zmena
+        label: Posun v tabulce
+        type: number
+        description: "O kolik míst se klub posunul od minulého kola: 1 nahoru, -1 dolů, 0 beze změny."
+      - name: forma
+        label: Forma
+        type: string
+        description: "Posledních pět zápasů, nejnovější vlevo: V výhra, R remíza, P prohra. Např. VVRPV"
+
+  # ------------------------------------------------------------------
+  - name: soupiska
+    label: Soupiska a statistiky
+    type: file
+    path: _data/soupiska.json
+    format: json
+    list: true
+    description: "Hráči A-týmu. Na webu se seřadí do skupin podle postu."
+    fields:
+      - name: jmeno
+        label: Jméno
+        type: string
+        required: true
+      - name: cislo
+        label: Číslo dresu
+        type: number
+      - name: post
+        label: Post
+        type: select
+        required: true
+        options:
+          values:
+            - { value: brankar, label: Brankář }
+            - { value: obrance, label: Obránce }
+            - { value: zaloznik, label: Záložník }
+            - { value: utocnik, label: Útočník }
+      - name: zapasy
+        label: Zápasy
+        type: number
+      - name: minuty
+        label: Minuty
+        type: number
+      - name: goly
+        label: Góly (hráči v poli)
+        type: number
+      - name: cista_konta
+        label: Čistá konta (brankáři)
+        type: number
+      - name: zlute
+        label: Žluté karty
+        type: number
+      - name: cervene
+        label: Červené karty
+        type: number
+
+  # ------------------------------------------------------------------
+  - name: klub
+    label: Klub a kontakty
+    type: file
+    path: _data/klub.json
+    format: json
+    fields:
+      - name: nas_tym
+        label: Název našeho týmu
+        type: string
+        description: "Neměnit. Podle něj web pozná náš řádek v tabulce."
+      - name: soutez
+        label: Soutěž
+        type: string
+      - name: popis_tabulky
+        label: Popisek nad tabulkou
+        type: string
+        description: "Např. Sezona 2026/27 • po 14. kole"
+      - name: popis_soupisky
+        label: Popisek nad soupiskou
+        type: string
+      - name: odkaz_tabulka
+        label: Odkaz na tabulku na fotbal.cz
+        type: string
+      - name: odkaz_rozpis
+        label: Odkaz na rozpis na fotbal.cz
+        type: string
+      - name: facebook
+        label: Facebook
+        type: string
+      - name: instagram
+        label: Instagram
+        type: string
+      - name: treneri
+        label: Trenéři
+        type: string
+      - name: asistenti
+        label: Asistenti
+        type: string
+      - name: vedouci
+        label: Vedoucí týmu
+        type: string
+      - name: kontakty
+        label: Kontakty
+        type: object
+        list: true
+        fields:
+          - name: funkce
+            label: Funkce
+            type: string
+          - name: jmeno
+            label: Jméno
+            type: string
+          - name: telefon
+            label: Telefon
+            type: string
+            description: "Např. +420 602 410 611"
