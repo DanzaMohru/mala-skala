@@ -1,6 +1,6 @@
 // =====================================================================
 //  SKRIPT WEBU SK MALÁ SKÁLA
-//  Data (tabulka, program, výsledky) se upravují v administraci.
+//  Data (tabulka, zápasy) se upravují v administraci.
 //  Tady je jen kód, který z nich skládá stránku. Po kole se tu nic nemění.
 // =====================================================================
 
@@ -215,17 +215,48 @@ function vykresliTabulku() {
 
 // ---------------------------------------------------------------------
 //  PROGRAM A VÝSLEDKY
+//  Všechny zápasy jsou v jednom seznamu. Zápas s vyplněnými góly
+//  je odehraný (patří do výsledků), zápas bez gólů je v programu.
 // ---------------------------------------------------------------------
 
-// vybere z programu jen zápasy, jejichž týden ještě neskončil
+// má zápas vyplněný výsledek? (obě čísla gólů)
+function maVysledek(zapas) {
+    return zapas.nase_goly !== null && zapas.nase_goly !== undefined && zapas.nase_goly !== "" &&
+           zapas.goly_soupere !== null && zapas.goly_soupere !== undefined && zapas.goly_soupere !== "";
+}
+
+// pomocník pro řazení: "2027-02-12" + "19:15" -> "2027-02-12 19:15"
+function klicRazeni(zapas) {
+    return String(zapas.datum) + " " + String(zapas.cas || "");
+}
+
+// program: zápasy bez výsledku, jejichž týden ještě neskončil, od nejbližšího
 function nadchazejiciZapasy() {
     var ted = new Date();                  // dnešní datum a čas na zařízení návštěvníka
     var vybrane = [];
-    for (var i = 0; i < program.length; i++) {
-        if (ted < konecTydne(program[i])) {
-            vybrane.push(program[i]);      // push = přidej na konec seznamu
+    for (var i = 0; i < zapasy.length; i++) {
+        if (!maVysledek(zapasy[i]) && ted < konecTydne(zapasy[i])) {
+            vybrane.push(zapasy[i]);       // push = přidej na konec seznamu
         }
     }
+    // sort = seřaď; tady od nejstaršího data po nejnovější
+    vybrane.sort(function (a, b) {
+        return klicRazeni(a) < klicRazeni(b) ? -1 : 1;
+    });
+    return vybrane;
+}
+
+// výsledky: zápasy s vyplněnými góly, od nejnovějšího
+function odehraneZapasy() {
+    var vybrane = [];
+    for (var i = 0; i < zapasy.length; i++) {
+        if (maVysledek(zapasy[i])) {
+            vybrane.push(zapasy[i]);
+        }
+    }
+    vybrane.sort(function (a, b) {
+        return klicRazeni(a) > klicRazeni(b) ? -1 : 1;
+    });
     return vybrane;
 }
 
@@ -247,7 +278,7 @@ function radekZapasu(zapas, vpravo) {
            "</div>";
 }
 
-function vykresliZapasy(nadchazejici) {
+function vykresliZapasy(nadchazejici, vysledky) {
     var html = "";
     for (var i = 0; i < nadchazejici.length; i++) {
         html += radekZapasu(nadchazejici[i], '<span class="cas">' + nadchazejici[i].cas + "</span>");
@@ -257,8 +288,9 @@ function vykresliZapasy(nadchazejici) {
     }
     document.getElementById("program").innerHTML = html;
 
+    // ve výsledcích se ukáže pět posledních zápasů
     html = "";
-    for (var k = 0; k < vysledky.length; k++) {
+    for (var k = 0; k < vysledky.length && k < 5; k++) {
         var z = vysledky[k];
         html += radekZapasu(z, '<span class="vysledek ' + nasVysledek(z) + '">' + skoreZapasu(z) + "</span>");
     }
@@ -291,7 +323,7 @@ function kartaZapasu(zapas, uprostred) {
            '<p class="kdy">' + kdy + "</p>";
 }
 
-function vykresliUvod(nadchazejici) {
+function vykresliUvod(nadchazejici, vysledky) {
     // příští zápas = první zápas, jehož týden ještě neskončil
     if (nadchazejici.length > 0) {
         document.getElementById("pristi").innerHTML = kartaZapasu(nadchazejici[0], '<div class="vs">VS</div>');
@@ -299,7 +331,7 @@ function vykresliUvod(nadchazejici) {
         document.getElementById("pristi").innerHTML = '<p class="kdy">Další zápasy zatím nejsou v programu.</p>';
     }
 
-    // poslední výsledek = první zápas ve výsledcích
+    // poslední výsledek = nejnovější odehraný zápas
     if (vysledky.length > 0) {
         document.getElementById("posledni").innerHTML = kartaZapasu(vysledky[0], '<div class="skore">' + skoreZapasu(vysledky[0]) + "</div>");
     }
@@ -328,8 +360,9 @@ function vykresliZapasyKClanku(nadchazejici) {
 // ---------------------------------------------------------------------
 if (document.getElementById("tabulka-radky")) {
     var nadchazejici = nadchazejiciZapasy();
+    var vysledky = odehraneZapasy();
     vykresliTabulku();
-    vykresliZapasy(nadchazejici);
-    vykresliUvod(nadchazejici);
+    vykresliZapasy(nadchazejici, vysledky);
+    vykresliUvod(nadchazejici, vysledky);
     vykresliZapasyKClanku(nadchazejici);
 }

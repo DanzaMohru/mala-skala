@@ -113,99 +113,64 @@ content:
         hidden: true
 
   # ------------------------------------------------------------------
-  - name: program
-    label: Program zápasů
+  - name: zapasy
+    label: Zápasy (program a výsledky)
     type: file
-    path: _data/program.json
+    path: _data/zapasy.json
     format: json
-    list: true
-    description: "Nadcházející zápasy, nejbližší nahoře. Odehraný zápas web sám schová v pondělí po zápase. Pak ho přidej do Výsledků a odsud smaž."
+    description: "Všechny zápasy áčka. Po zápase stačí otevřít zápas a vyplnit góly, web ho sám přesune z programu do výsledků. Pořadí v seznamu nevadí, web si zápasy seřadí podle data."
     fields:
-      - name: datum
-        label: Datum
-        type: date
-        required: true
-      - name: cas
-        label: Čas výkopu
-        type: string
-        description: "Např. 15:30"
-      - name: kolo
-        label: Kolo
-        type: string
-        description: "Např. 18. kolo nebo MOL Cup"
-      - name: soutez
-        label: Soutěž
-        type: string
-        description: "Např. 7. liga VÝCHOD nebo skupina E"
-      - name: souper
-        label: Soupeř
-        type: string
-        required: true
-      - name: znak
-        label: Znak soupeře
-        type: image
-        options:
-          media: znaky
-      - name: doma
-        label: Hrajeme doma
-        type: boolean
-      - name: misto
-        label: Hřiště
-        type: string
-        description: "Nepovinné. Vyplň jen u zápasu na jiném hřišti, např. UMT Turnov."
-      - name: pohar
-        label: Pohárový nebo přípravný zápas
-        type: boolean
-
-  # ------------------------------------------------------------------
-  - name: vysledky
-    label: Výsledky
-    type: file
-    path: _data/vysledky.json
-    format: json
-    list: true
-    description: "Odehrané zápasy, nejnovější nahoře. První zápas se ukáže v úvodu jako Poslední výsledek. Na webu se ukazuje pět nejnovějších, starší můžeš smazat."
-    fields:
-      - name: datum
-        label: Datum
-        type: date
-        required: true
-      - name: cas
-        label: Čas výkopu
-        type: string
-      - name: kolo
-        label: Kolo
-        type: string
-      - name: soutez
-        label: Soutěž
-        type: string
-      - name: souper
-        label: Soupeř
-        type: string
-        required: true
-      - name: znak
-        label: Znak soupeře
-        type: image
-        options:
-          media: znaky
-      - name: doma
-        label: Hráli jsme doma
-        type: boolean
-      - name: nase_goly
-        label: Naše góly
-        type: number
-        required: true
-      - name: goly_soupere
-        label: Góly soupeře
-        type: number
-        required: true
-      - name: misto
-        label: Hřiště
-        type: string
-        description: "Nepovinné, jen u zápasu na jiném hřišti."
-      - name: pohar
-        label: Pohárový nebo přípravný zápas
-        type: boolean
+      - name: zapasy
+        label: Zápasy
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{datum} • {souper}"
+        fields:
+          - name: datum
+            label: Datum
+            type: date
+            required: true
+          - name: cas
+            label: Čas výkopu
+            type: string
+            description: "Např. 15:30"
+          - name: kolo
+            label: Kolo
+            type: string
+            description: "Např. 18. kolo nebo MOL Cup"
+          - name: soutez
+            label: Soutěž
+            type: string
+            description: "Např. 7. liga VÝCHOD nebo skupina E"
+          - name: souper
+            label: Soupeř
+            type: string
+            required: true
+          - name: znak
+            label: Znak soupeře
+            type: image
+            options:
+              media: znaky
+          - name: doma
+            label: Hrajeme doma
+            type: boolean
+          - name: misto
+            label: Hřiště
+            type: string
+            description: "Nepovinné. Vyplň jen u zápasu na jiném hřišti, např. UMT Turnov."
+          - name: pohar
+            label: Pohárový nebo přípravný zápas
+            type: boolean
+          - name: nase_goly
+            label: Naše góly
+            type: number
+            description: "Vyplň až po zápase. Dokud jsou góly prázdné, zápas je v programu."
+          - name: goly_soupere
+            label: Góly soupeře
+            type: number
+            description: "Vyplň až po zápase."
 
   # ------------------------------------------------------------------
   - name: tabulka
@@ -213,46 +178,53 @@ content:
     type: file
     path: _data/tabulka.json
     format: json
-    list: true
-    description: "Kluby v pořadí od prvního místa. Číslo místa se dopočítá samo. Údaje opiš z fotbal.cz."
+    description: "Kluby v pořadí od prvního místa (pořadí jde měnit přetažením). Číslo místa se dopočítá samo. Údaje opiš z fotbal.cz."
     fields:
-      - name: klub
-        label: Klub
-        type: string
-        required: true
-        description: "Náš klub musí být napsaný přesně Malá Skála, jinak se nezvýrazní."
-      - name: znak
-        label: Znak
-        type: image
-        options:
-          media: znaky
-      - name: z
-        label: Zápasy
-        type: number
-      - name: v
-        label: Výhry
-        type: number
-      - name: r
-        label: Remízy
-        type: number
-      - name: p
-        label: Prohry
-        type: number
-      - name: skore
-        label: Skóre
-        type: string
-        description: "Např. 45:11"
-      - name: body
-        label: Body
-        type: number
-      - name: zmena
-        label: Posun v tabulce
-        type: number
-        description: "O kolik míst se klub posunul od minulého kola: 1 nahoru, -1 dolů, 0 beze změny."
-      - name: forma
-        label: Forma
-        type: string
-        description: "Posledních pět zápasů, nejnovější vlevo: V výhra, R remíza, P prohra. Např. VVRPV"
+      - name: kluby
+        label: Kluby
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {klub} • {body} b."
+        fields:
+          - name: klub
+            label: Klub
+            type: string
+            required: true
+            description: "Náš klub musí být napsaný přesně Malá Skála, jinak se nezvýrazní."
+          - name: znak
+            label: Znak
+            type: image
+            options:
+              media: znaky
+          - name: z
+            label: Zápasy
+            type: number
+          - name: v
+            label: Výhry
+            type: number
+          - name: r
+            label: Remízy
+            type: number
+          - name: p
+            label: Prohry
+            type: number
+          - name: skore
+            label: Skóre
+            type: string
+            description: "Např. 45:11"
+          - name: body
+            label: Body
+            type: number
+          - name: zmena
+            label: Posun v tabulce
+            type: number
+            description: "O kolik míst se klub posunul od minulého kola: 1 nahoru, -1 dolů, 0 beze změny."
+          - name: forma
+            label: Forma
+            type: string
+            description: "Posledních pět zápasů, nejnovější vlevo: V výhra, R remíza, P prohra. Např. VVRPV"
 
   # ------------------------------------------------------------------
   - name: soupiska
@@ -260,44 +232,51 @@ content:
     type: file
     path: _data/soupiska.json
     format: json
-    list: true
     description: "Hráči A-týmu. Na webu se seřadí do skupin podle postu."
     fields:
-      - name: jmeno
-        label: Jméno
-        type: string
-        required: true
-      - name: cislo
-        label: Číslo dresu
-        type: number
-      - name: post
-        label: Post
-        type: select
-        required: true
-        options:
-          values:
-            - { value: brankar, label: Brankář }
-            - { value: obrance, label: Obránce }
-            - { value: zaloznik, label: Záložník }
-            - { value: utocnik, label: Útočník }
-      - name: zapasy
-        label: Zápasy
-        type: number
-      - name: minuty
-        label: Minuty
-        type: number
-      - name: goly
-        label: Góly (hráči v poli)
-        type: number
-      - name: cista_konta
-        label: Čistá konta (brankáři)
-        type: number
-      - name: zlute
-        label: Žluté karty
-        type: number
-      - name: cervene
-        label: Červené karty
-        type: number
+      - name: hraci
+        label: Hráči
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{jmeno}"
+        fields:
+          - name: jmeno
+            label: Jméno
+            type: string
+            required: true
+          - name: cislo
+            label: Číslo dresu
+            type: number
+          - name: post
+            label: Post
+            type: select
+            required: true
+            options:
+              values:
+                - { value: brankar, label: Brankář }
+                - { value: obrance, label: Obránce }
+                - { value: zaloznik, label: Záložník }
+                - { value: utocnik, label: Útočník }
+          - name: zapasy
+            label: Zápasy
+            type: number
+          - name: minuty
+            label: Minuty
+            type: number
+          - name: goly
+            label: Góly (hráči v poli)
+            type: number
+          - name: cista_konta
+            label: Čistá konta (brankáři)
+            type: number
+          - name: zlute
+            label: Žluté karty
+            type: number
+          - name: cervene
+            label: Červené karty
+            type: number
 
   # ------------------------------------------------------------------
   - name: klub
@@ -344,7 +323,10 @@ content:
       - name: kontakty
         label: Kontakty
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{funkce}: {jmeno}"
         fields:
           - name: funkce
             label: Funkce

@@ -136,7 +136,7 @@ layout: zaklad
 {%- assign skupiny = "brankar:Brankáři:Brankář,obrance:Obránci:Obránce,zaloznik:Záložníci:Záložník,utocnik:Útočníci:Útočník" | split: "," %}
 {%- for skupina in skupiny %}
 {%- assign s = skupina | split: ":" %}
-{%- assign hraci = site.data.soupiska | where: "post", s[0] %}
+{%- assign hraci = site.data.soupiska.hraci | where: "post", s[0] %}
 {%- if hraci.size > 0 %}
 
             <h3 class="skupina">{{ s[1] }}</h3>
@@ -239,7 +239,6 @@ layout: zaklad
     <script>
         var zaklad = "{{ site.baseurl }}";
         var nasTym = {{ klub.nas_tym | jsonify }};
-        var tabulka = {{ site.data.tabulka | jsonify }};
-        var program = {{ site.data.program | jsonify }};
-        var vysledky = {{ site.data.vysledky | jsonify }};
+        var tabulka = {{ site.data.tabulka.kluby | jsonify }};
+        var zapasy = {{ site.data.zapasy.zapasy | jsonify }};
     </script>
