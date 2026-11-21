@@ -1,0 +1,14 @@
+{%- comment -%}
+  Malá karta článku (aktuality na hlavní stránce, přehled všech článků).
+{%- endcomment -%}
+{%- assign c = include.clanek -%}
+<a class="clanek" href="{{ c.url | relative_url }}">
+{%- if c.foto %}
+    <img class="clanek-obrazek" src="{{ c.foto | relative_url }}" alt="{{ c.foto_popis | default: c.title | escape }}">
+{%- endif %}
+    {% include clanek-znaky.html clanek=c %}
+    <p class="clanek-meta">{% include clanek-meta.html clanek=c %}</p>
+    <h3>{{ c.title }}</h3>
+    <p class="clanek-perex">{{ c.perex }}</p>
+    <span class="cist">{% if c.zapas and c.zapas.souper %}Číst report{% else %}Číst článek{% endif %} →</span>
+</a>

@@ -1,0 +1,18 @@
+{%- comment -%}
+  Infobox: každý řádek ve tvaru "Popis: hodnota" (např. "Branky: 12. Novák").
+  Text před první dvojtečkou se vypíše tučně.
+{%- endcomment -%}
+{%- assign radky = include.text | strip | newline_to_br | split: "<br />" -%}
+{%- for radek in radky -%}
+{%- assign r = radek | strip -%}
+{%- if r != "" -%}
+{%- if r contains ":" -%}
+{%- assign popisek = r | split: ":" | first -%}
+<strong>{{ popisek }}:</strong>{{ r | remove_first: popisek | remove_first: ":" }}
+{%- else -%}
+{{ r }}
+{%- endif -%}
+{%- unless forloop.last %}<br>
+{% endunless -%}
+{%- endif -%}
+{%- endfor -%}

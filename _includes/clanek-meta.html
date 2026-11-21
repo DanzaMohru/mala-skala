@@ -1,0 +1,13 @@
+{%- comment -%}
+  Řádek nad titulkem článku, např. "So 7. 11. • 1. kolo • venku".
+  Když má článek vyplněný štítek, použije se místo toho štítek.
+{%- endcomment -%}
+{%- assign c = include.clanek -%}
+{%- if c.stitek and c.stitek != "" -%}
+{{ c.stitek }}
+{%- else -%}
+{%- assign dny = "Ne,Po,Út,St,Čt,Pá,So" | split: "," -%}
+{%- assign w = c.date | date: "%w" | plus: 0 -%}
+{{ dny[w] }} {{ c.date | date: "%-d. %-m." }}
+{%- if c.zapas and c.zapas.souper %} • {{ c.zapas.kolo }} • {% if c.zapas.doma %}doma{% else %}venku{% endif %}{% endif -%}
+{%- endif -%}

@@ -1,0 +1,29 @@
+# =====================================================================
+#  NASTAVENÍ WEBU SK MALÁ SKÁLA
+#  Web skládá GitHub Pages (Jekyll). Obsah se upravuje v administraci
+#  Pages CMS, tenhle soubor běžně měnit není potřeba.
+# =====================================================================
+
+title: SK Malá Skála
+description: Fotbalový klub SK Malá Skála z Českého ráje. Áčko hraje 7. ligu VÝCHOD Libereckého kraje. Program zápasů, výsledky, tabulka, soupiska, reporty a areál.
+lang: cs
+timezone: Europe/Prague
+
+# adresa článků: /clanky/nazev-clanku/
+permalink: /clanky/:title/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# všechny články používají šablonu _layouts/clanek.html
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: clanek
+
+# soubory, které na web nepatří
+exclude:
+  - README.md

@@ -1,0 +1,94 @@
+---
+layout: zaklad
+---
+{%- comment -%}
+  Stránka jednoho článku nebo reportu.
+  Obsah se píše v administraci (Články a reporty).
+{%- endcomment -%}
+    <section class="sekce clanek-stranka">
+        <div class="obsah obsah-clanek">
+            <a class="zpet" href="{{ '/#aktuality' | relative_url }}">← Zpět na aktuality</a>
+            <p class="clanek-meta">{% include clanek-meta.html clanek=page %}</p>
+            <h1 class="clanek-titulek">{{ page.title }}</h1>
+
+{%- if page.zapas and page.zapas.souper %}
+{%- assign z = page.zapas %}
+{%- assign nase = z.nase_goly | default: 0 %}
+{%- assign jejich = z.goly_soupere | default: 0 %}
+{%- if z.doma %}
+    {%- assign domaci = site.data.klub.nas_tym %}{% assign hoste = z.souper %}
+    {%- assign znak_domaci = '/logo.png' %}{% assign znak_hoste = z.znak %}
+    {%- assign skore = nase | append: ":" | append: jejich %}
+{%- else %}
+    {%- assign domaci = z.souper %}{% assign hoste = site.data.klub.nas_tym %}
+    {%- assign znak_domaci = z.znak %}{% assign znak_hoste = '/logo.png' %}
+    {%- assign skore = jejich | append: ":" | append: nase %}
+{%- endif %}
+            <!-- výsledek zápasu -->
+            <div class="karta-zapas clanek-zapas">
+                <div class="souperi">
+                    <div class="tym"><img src="{{ znak_domaci | relative_url }}" alt="Znak {{ domaci }}"><span>{{ domaci }}</span></div>
+                    <div class="skore">{{ skore }}</div>
+                    <div class="tym"><img src="{{ znak_hoste | relative_url }}" alt="Znak {{ hoste }}"><span>{{ hoste }}</span></div>
+                </div>
+            </div>
+{%- endif %}
+
+{%- if page.foto %}
+            <figure class="clanek-foto">
+                <img src="{{ page.foto | relative_url }}" alt="{{ page.foto_popis | default: page.title | escape }}">
+{%- if page.foto_popis %}
+                <figcaption>{{ page.foto_popis }}</figcaption>
+{%- endif %}
+            </figure>
+{%- endif %}
+
+            <div class="report">
+                <p class="uvod">{{ page.perex }}</p>
+{{ content }}
+{%- if page.infobox and page.infobox != "" %}
+                <div class="infobox">
+                    {% include infobox.html text=page.infobox %}
+                </div>
+{%- endif %}
+            </div>
+
+{%- if page.sestava_skala or page.sestava_souper %}
+            <h2 class="nadpis-sestavy">Sestavy</h2>
+            <div class="sestavy-text">
+                <div>
+                    <h4>Skala</h4>
+                    <p>{{ page.sestava_skala | escape | newline_to_br }}</p>
+                </div>
+                <div>
+                    <h4>{{ page.zapas.souper | default: "Soupeř" }}</h4>
+                    <p>{{ page.sestava_souper | escape | newline_to_br }}</p>
+                </div>
+            </div>
+{%- elsif page.sestavy_html %}
+            <h2 class="nadpis-sestavy">Sestavy</h2>
+            {{ page.sestavy_html }}
+{%- endif %}
+
+            <div class="sdileni">
+                <a class="tlacitko" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener">Sdílet na Facebooku</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DALŠÍ ČLÁNKY -->
+    <section class="sekce">
+        <div class="obsah">
+            <h2>Další <span class="cervena">články</span></h2>
+            <div class="clanky">
+{%- assign pocet = 0 %}
+{%- for c in site.posts %}
+{%- if c.url != page.url and pocet < 3 %}
+                {% include karta-clanku.html clanek=c %}
+{%- assign pocet = pocet | plus: 1 %}
+{%- endif %}
+{%- endfor %}
+            </div>
+            <a class="odkaz vsechny-clanky" href="{{ '/clanky/' | relative_url }}">Všechny články →</a>
+        </div>
+    </section>

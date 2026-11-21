@@ -1,11 +1,14 @@
 # Zkušební sestavení webu ve větvi "prestavba".
-# Sestaví web stejným nástrojem jako GitHub Pages a výsledek uloží ke stažení.
-# Na živý web nemá vliv. Před spuštěním nové verze se tento soubor smaže.
+# Sestaví web stejným nástrojem jako GitHub Pages a výsledek uloží
+# do větve "nahled" ke kontrole. Na živý web nemá vliv.
+# Před spuštěním nové verze webu se tento soubor smaže.
 name: Zkusebni sestaveni
 on:
   push:
     branches: [prestavba]
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   sestaveni:
     runs-on: ubuntu-latest
@@ -15,7 +18,12 @@ jobs:
         with:
           source: ./
           destination: ./_site
-      - uses: actions/upload-artifact@v4
-        with:
-          name: web
-          path: _site
+      - name: Ulozit nahled do vetve nahled
+        run: |
+          sudo chown -R "$(id -u)" _site
+          cd _site
+          git init -q
+          git checkout -q -b nahled
+          git add -A
+          git -c user.name="github-actions" -c user.email="github-actions@users.noreply.github.com" commit -q -m "Nahled sestaveneho webu"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" nahled

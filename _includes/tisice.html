@@ -1,0 +1,9 @@
+{%- comment -%} Číslo s mezerou po tisících: 1085 -> 1 085 {%- endcomment -%}
+{%- assign n = include.cislo | default: 0 | plus: 0 -%}
+{%- if n >= 1000 -%}
+{%- assign tis = n | divided_by: 1000 -%}
+{%- assign zbytek = n | modulo: 1000 -%}
+{{ tis }}&nbsp;{% if zbytek < 10 %}00{% elsif zbytek < 100 %}0{% endif %}{{ zbytek }}
+{%- else -%}
+{{ n }}
+{%- endif -%}

@@ -1,0 +1,30 @@
+{
+  "nas_tym": "Malá Skála",
+  "soutez": "7. liga VÝCHOD",
+  "popis_tabulky": "Sezona 2026/27 • po podzimní části",
+  "popis_soupisky": "Sezona 2026/27 • statistiky z podzimní části",
+  "odkaz_tabulka": "https://www.fotbal.cz/souteze/turnaje/hlavni/0ca536cd-8f38-4e0b-b412-e9cd75a0590f",
+  "odkaz_rozpis": "https://www.fotbal.cz/souteze/turnaje/zapas/0ca536cd-8f38-4e0b-b412-e9cd75a0590f",
+  "facebook": "https://www.facebook.com/profile.php?id=100035350881825",
+  "instagram": "https://www.instagram.com/sk_mala_skala/",
+  "treneri": "Petr Srbek, Heřman Kubín",
+  "asistenti": "Jan Hrstka, Michal Porš",
+  "vedouci": "Petr Brožek",
+  "kontakty": [
+    {
+      "funkce": "Předseda klubu",
+      "jmeno": "Pavel Mikez",
+      "telefon": "+420 602 410 611"
+    },
+    {
+      "funkce": "Trenér A-týmu",
+      "jmeno": "Petr Srbek",
+      "telefon": "+420 608 761 633"
+    },
+    {
+      "funkce": "Administrátor webu",
+      "jmeno": "Daniel Mohr",
+      "telefon": "+420 606 751 187"
+    }
+  ]
+}

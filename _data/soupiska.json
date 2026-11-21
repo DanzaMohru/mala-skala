@@ -1,0 +1,262 @@
+[
+  {
+    "cislo": 18,
+    "jmeno": "Miroslav Hlaváč",
+    "post": "brankar",
+    "zapasy": 2,
+    "minuty": 180,
+    "cista_konta": 0,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": 29,
+    "jmeno": "Daniel Mohr",
+    "post": "brankar",
+    "zapasy": 11,
+    "minuty": 990,
+    "cista_konta": 1,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": 3,
+    "jmeno": "Tomáš Rác",
+    "post": "obrance",
+    "zapasy": 11,
+    "minuty": 854,
+    "goly": 0,
+    "zlute": 0,
+    "cervene": 1
+  },
+  {
+    "cislo": 6,
+    "jmeno": "Jan Konečný",
+    "post": "obrance",
+    "zapasy": 11,
+    "minuty": 785,
+    "goly": 1,
+    "zlute": 1,
+    "cervene": 0
+  },
+  {
+    "cislo": 8,
+    "jmeno": "Jiří Jiskra",
+    "post": "obrance",
+    "zapasy": 6,
+    "minuty": 388,
+    "goly": 0,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": 11,
+    "jmeno": "Jiří Šilhán",
+    "post": "obrance",
+    "zapasy": 9,
+    "minuty": 794,
+    "goly": 1,
+    "zlute": 1,
+    "cervene": 0
+  },
+  {
+    "cislo": 14,
+    "jmeno": "Zdeněk Cafourek",
+    "post": "obrance",
+    "zapasy": 10,
+    "minuty": 660,
+    "goly": 0,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": null,
+    "jmeno": "Martin Vít",
+    "post": "obrance",
+    "zapasy": 5,
+    "minuty": 201,
+    "goly": 0,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": null,
+    "jmeno": "Tomáš Kratochvíl",
+    "post": "obrance",
+    "zapasy": 2,
+    "minuty": 121,
+    "goly": 0,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": 2,
+    "jmeno": "Jan Krejčí",
+    "post": "zaloznik",
+    "zapasy": 10,
+    "minuty": 791,
+    "goly": 0,
+    "zlute": 4,
+    "cervene": 1
+  },
+  {
+    "cislo": 4,
+    "jmeno": "David Pařík",
+    "post": "zaloznik",
+    "zapasy": 9,
+    "minuty": 532,
+    "goly": 0,
+    "zlute": 1,
+    "cervene": 0
+  },
+  {
+    "cislo": 5,
+    "jmeno": "Jakub Mikez",
+    "post": "zaloznik",
+    "zapasy": 11,
+    "minuty": 426,
+    "goly": 1,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": 7,
+    "jmeno": "Zdeněk Kotrba",
+    "post": "zaloznik",
+    "zapasy": 11,
+    "minuty": 950,
+    "goly": 1,
+    "zlute": 5,
+    "cervene": 0
+  },
+  {
+    "cislo": 12,
+    "jmeno": "Michal Matějíček",
+    "post": "zaloznik",
+    "zapasy": 13,
+    "minuty": 1085,
+    "goly": 3,
+    "zlute": 2,
+    "cervene": 0
+  },
+  {
+    "cislo": 13,
+    "jmeno": "Jan Pešek",
+    "post": "zaloznik",
+    "zapasy": 9,
+    "minuty": 449,
+    "goly": 2,
+    "zlute": 1,
+    "cervene": 0
+  },
+  {
+    "cislo": 16,
+    "jmeno": "Petr Hlava",
+    "post": "zaloznik",
+    "zapasy": 3,
+    "minuty": 66,
+    "goly": 0,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": 17,
+    "jmeno": "Ondřej Petr",
+    "post": "zaloznik",
+    "zapasy": 11,
+    "minuty": 928,
+    "goly": 1,
+    "zlute": 2,
+    "cervene": 0
+  },
+  {
+    "cislo": 19,
+    "jmeno": "Jan Stránský",
+    "post": "zaloznik",
+    "zapasy": 12,
+    "minuty": 564,
+    "goly": 3,
+    "zlute": 3,
+    "cervene": 0
+  },
+  {
+    "cislo": null,
+    "jmeno": "Šimon Mikez",
+    "post": "zaloznik",
+    "zapasy": 6,
+    "minuty": 248,
+    "goly": 0,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": 9,
+    "jmeno": "Dominik Plhal",
+    "post": "utocnik",
+    "zapasy": 8,
+    "minuty": 676,
+    "goly": 3,
+    "zlute": 3,
+    "cervene": 0
+  },
+  {
+    "cislo": 10,
+    "jmeno": "Leoš Plátek",
+    "post": "utocnik",
+    "zapasy": 7,
+    "minuty": 606,
+    "goly": 8,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": 15,
+    "jmeno": "Alex Vondál",
+    "post": "utocnik",
+    "zapasy": 12,
+    "minuty": 359,
+    "goly": 3,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": 21,
+    "jmeno": "Petr Srbek",
+    "post": "utocnik",
+    "zapasy": 3,
+    "minuty": 47,
+    "goly": 0,
+    "zlute": 1,
+    "cervene": 0
+  },
+  {
+    "cislo": 23,
+    "jmeno": "Ondřej Hapiak",
+    "post": "utocnik",
+    "zapasy": 1,
+    "minuty": 6,
+    "goly": 0,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": null,
+    "jmeno": "Milan Drobný",
+    "post": "utocnik",
+    "zapasy": 2,
+    "minuty": 84,
+    "goly": 0,
+    "zlute": 0,
+    "cervene": 0
+  },
+  {
+    "cislo": null,
+    "jmeno": "Zdeněk Knobloch",
+    "post": "utocnik",
+    "zapasy": 2,
+    "minuty": 111,
+    "goly": 0,
+    "zlute": 0,
+    "cervene": 0
+  }
+]

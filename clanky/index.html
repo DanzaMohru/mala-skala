@@ -1,0 +1,17 @@
+---
+layout: zaklad
+title: Všechny články
+perex: Reporty ze zápasů a novinky z fotbalového klubu SK Malá Skála.
+---
+    <section class="sekce">
+        <div class="obsah">
+            <a class="zpet" href="{{ '/' | relative_url }}">← Zpět na hlavní stránku</a>
+            <p class="nadtitulek">Novinky a reporty áčka</p>
+            <h2>Všechny <span class="cervena">články</span></h2>
+            <div class="clanky">
+{%- for c in site.posts %}
+                {% include karta-clanku.html clanek=c %}
+{%- endfor %}
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+{%- if page.title %}
+    {%- assign titulek = page.title | append: " | SK Malá Skála" %}
+    {%- assign titulek_sdileni = page.title %}
+{%- else %}
+    {%- assign titulek = "SK Malá Skála – fotbal v Českém ráji" %}
+    {%- assign titulek_sdileni = titulek %}
+{%- endif %}
+{%- assign popis = page.perex | default: site.description | strip_html | strip_newlines %}
+    <title>{{ titulek }}</title>
+    <meta name="description" content="{{ popis | escape }}">
+
+    <!-- ikonka v záložce prohlížeče a na ploše telefonu -->
+    <link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}">
+    <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
+
+    <!-- náhled při sdílení odkazu na Facebooku, WhatsAppu apod. -->
+    <meta property="og:type" content="{% if page.layout == 'clanek' %}article{% else %}website{% endif %}">
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:site_name" content="SK Malá Skála">
+    <meta property="og:title" content="{{ titulek_sdileni | escape }}">
+    <meta property="og:description" content="{{ popis | escape }}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+{%- if page.foto %}
+    <meta property="og:image" content="{{ page.foto | absolute_url }}">
+{%- else %}
+    <meta property="og:image" content="{{ '/sdileni.jpg' | absolute_url }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+{%- endif %}
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/styl.css' | relative_url }}">
+</head>
+<body>
+
+    <!-- ČERVENÝ PRUH -->
+    <div class="pruh">
+        <div class="obsah pruh-vnitrek">
+            <span>{{ site.data.klub.soutez }} • Liberecký kraj</span>
+            <span><a href="{{ site.data.klub.facebook }}" target="_blank" rel="noopener">Facebook</a> • <a href="{{ site.data.klub.instagram }}" target="_blank" rel="noopener">Instagram</a></span>
+        </div>
+    </div>
+
+    <!-- ZÁHLAVÍ -->
+    <header>
+        <div class="obsah hlavicka">
+            <a href="{{ '/' | relative_url }}" class="znacka">
+                <img src="{{ '/logo.png' | relative_url }}" alt="Logo SK Malá Skála">
+                <span class="nazev">SK <span class="cervena">Malá Skála</span></span>
+            </a>
+            <!-- tlačítko menu (tři čárky) – vidět je jen na mobilu -->
+            <button id="menu-tlacitko" class="menu-tlacitko" onclick="menu()" aria-label="Menu">☰</button>
+            <nav id="menu" onclick="zavriMenu()">
+                <a href="{{ '/#aktuality' | relative_url }}">Aktuality</a>
+                <a href="{{ '/#tabulka' | relative_url }}">Zápasy / Tabulka</a>
+                <a href="{{ '/#tym' | relative_url }}">Tým</a>
+                <a href="{{ '/#areal' | relative_url }}">Areál</a>
+                <a href="{{ '/#kontakt' | relative_url }}">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+{{ content }}
+
+    <!-- PATIČKA -->
+    <footer>
+        <div class="obsah">
+            <div class="paticka">
+                <img src="{{ '/logo.png' | relative_url }}" alt="Logo SK Malá Skála">
+                <div class="paticka-text"><strong>SK Malá Skála</strong><br>Labe 196, 468 22 Malá Skála</div>
+                <div class="paticka-odkazy">
+                    <a href="{{ site.data.klub.facebook }}" target="_blank" rel="noopener">Facebook</a>
+                    <a href="{{ site.data.klub.instagram }}" target="_blank" rel="noopener">Instagram</a>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Daniel Mohr • Web vytvořil Daniel Mohr • Všechna práva vyhrazena</p>
+        </div>
+    </footer>
+
+    <script src="{{ '/assets/skript.js' | relative_url }}"></script>
+</body>
+</html>
