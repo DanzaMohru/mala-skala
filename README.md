@@ -31,7 +31,7 @@ Po uložení se web sám přestaví a změna je vidět asi do dvou minut.
 | `_includes/` | menší kousky šablon (karta článku, infobox…) |
 | `_posts/` | články, jeden soubor = jeden článek |
 | `_data/` | tabulka, zápasy, soupiska, klub (JSON) |
-| `assets/` | styly (`styl.css`) a skript (`skript.js`) |
+| `assets/` | styly (`styl.css`), skript (`skript.js`) a písma (`fonts/`, uložená u webu, nestahují se od Googlu) |
 | `fotky/` | fotky nahrané v administraci |
 | `znaky/` | znaky klubů |
 | `.pages.yml` | nastavení formulářů v administraci |
