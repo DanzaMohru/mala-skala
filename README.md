@@ -1,6 +1,8 @@
 # Web SK Malá Skála
 
-Web fotbalového klubu SK Malá Skála. Běží zdarma na GitHub Pages, obsah se upravuje v administraci **Pages CMS** (app.pagescms.org).
+Web fotbalového klubu SK Malá Skála na adrese **https://skmalaskala.cz**. Běží zdarma na GitHub Pages, obsah se upravuje v administraci **Pages CMS** (app.pagescms.org).
+
+Doména skmalaskala.cz je registrovaná u Wedosu (účet klubu, správce má přístup jako oprávněný uživatel). V DNS jsou 4 A záznamy na adresy GitHub Pages, CNAME `www` na danzamohru.github.io a TXT záznam `_github-pages-challenge-danzamohru` pro ověření domény. Ty záznamy ani soubor `CNAME` v repozitáři nemazat, jinak web na doméně přestane fungovat.
 
 ## Jak se web upravuje
 
