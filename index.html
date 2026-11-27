@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SK Malá Skála – fotbal v Českém ráji</title>
+    <meta name="description" content="Fotbalový klub SK Malá Skála z Českého ráje. Áčko hraje 7. ligu VÝCHOD Libereckého kraje. Program zápasů, výsledky, tabulka, soupiska, reporty a areál.">
+
+    <!-- ikonka v záložce prohlížeče a na ploše telefonu -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- náhled při sdílení odkazu na Facebooku, WhatsAppu apod. -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:site_name" content="SK Malá Skála">
+    <meta property="og:title" content="SK Malá Skála – fotbal v Českém ráji">
+    <meta property="og:description" content="Fotbalový klub SK Malá Skála z Českého ráje. Áčko hraje 7. ligu VÝCHOD Libereckého kraje. Program zápasů, výsledky, tabulka, soupiska, reporty a areál.">
+    <meta property="og:url" content="https://skmalaskala.cz/">
+    <meta property="og:image" content="https://skmalaskala.cz/sdileni.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <link rel="canonical" href="https://skmalaskala.cz/">
+
+    <link rel="stylesheet" href="/assets/styl.css?v=1795818484">
+</head>
+<body>
+
+    <!-- ČERVENÝ PRUH -->
+    <div class="pruh">
+        <div class="obsah pruh-vnitrek">
+            <span>7. liga VÝCHOD • Liberecký kraj</span>
+            <span><a href="https://www.facebook.com/profile.php?id=100035350881825" target="_blank" rel="noopener">Facebook</a> • <a href="https://www.instagram.com/sk_mala_skala/" target="_blank" rel="noopener">Instagram</a></span>
+        </div>
+    </div>
+
+    <!-- ZÁHLAVÍ -->
+    <header>
+        <div class="obsah hlavicka">
+            <a href="/" class="znacka">
+                <img src="/logo.png" alt="Logo SK Malá Skála">
+                <span class="nazev">SK <span class="cervena">Malá Skála</span></span>
+            </a>
+            <!-- tlačítko menu (tři čárky) – vidět je jen na mobilu -->
+            <button id="menu-tlacitko" class="menu-tlacitko" onclick="menu()" aria-label="Menu">☰</button>
+            <nav id="menu" onclick="zavriMenu()">
+                <a href="/#aktuality">Aktuality</a>
+                <a href="/#tabulka">Zápasy / Tabulka</a>
+                <a href="/#tym">Tým</a>
+                <a href="/#areal">Areál</a>
+                <a href="/#kontakt">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <!-- ÚVODNÍ BLOK -->
+    <section class="hero">
+        <div class="obsah hero-vnitrek">
+
+            <div class="hero-text">
+                <p class="stitek">7. liga VÝCHOD • sezona 2026/27</p>
+                <h1>SK <span class="cervena">Malá Skála</span><br>Fotbal v Českém ráji</h1>
+                <p class="perex">Fotbal v srdci Českého ráje, mezi skalami a Jizerou. Áčko hraje 7. ligu VÝCHOD Libereckého kraje, béčko okresní 8. ligu. Přijďte nás podpořit k lajně, vesnický fotbal stojí na lidech, kteří fandí.</p>
+                <div class="tlacitka">
+                    <a href="#tabulka" class="tlacitko">Tabulka 7. ligy</a>
+                    <a href="#zapasy" class="tlacitko tlacitko-tmave">Rozpis zápasů</a>
+                </div>
+                <div class="cisla">
+                    <div><strong id="nase-misto"></strong><span>místo v tabulce</span></div>
+                    <div><strong id="nase-skore"></strong><span>skóre</span></div>
+                    <div><strong id="nase-body"></strong><span>bodů</span></div>
+                </div>
+            </div>
+
+            <div class="karta-zapas">
+                <div class="prepinac">
+                    <button id="tlacitko-pristi" class="zalozka aktivni" onclick="prepni('pristi', 'posledni')">Příští zápas</button>
+                    <button id="tlacitko-posledni" class="zalozka" onclick="prepni('posledni', 'pristi')">Poslední výsledek</button>
+                </div>
+
+                <!-- obsah obou karet doplní JavaScript z dat v administraci -->
+                <div id="pristi"></div>
+                <div id="posledni" class="skryty"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- AKTUALITY: skládají se samy z článků (nejnovější nahoře) -->
+    <section id="aktuality" class="sekce">
+        <div class="obsah">
+            <p class="nadtitulek">Novinky a reporty áčka</p>
+            <h2>Aktuality <span class="cervena">ze Skaly</span></h2>
+            <div class="clanky">
+                <!-- nejnovější článek přes celou šířku -->
+                <a class="clanek clanek-hlavni" href="/clanky/zimni-mol-cup-skala-vyzve-dva-celky-z-5-ligy/">
+                    <div class="hlavni-text">
+                        <div class="clanek-znaky">
+    <img src="/logo.png" alt="">
+</div>
+
+                        <p class="clanek-meta">Zimní příprava • skupina E • UMT Turnov</p>
+                        <h3>Zimní MOL Cup: Skala vyzve dva celky z 5. ligy</h3>
+                        <p class="clanek-perex">Zimní pauza nebude dlouhá. Ještě před startem jara nás čekají tři zápasy zimního MOL Cupu a ve skupině E jsme dostali hodně těžký kalibr.</p>
+                        <span class="cist">Číst článek →</span>
+                    </div>
+                    <!-- bez fotky a bez zápasu: JavaScript sem doplní nejbližší zápasy -->
+                    <div class="hlavni-zapasy" id="hlavni-zapasy"></div>
+                </a>
+                <a class="clanek" href="/clanky/skala-hodkovice-2-5/">
+    <div class="clanek-znaky">
+    <img src="/logo.png" alt="">
+    <span class="vysledek prohra">2:5</span>
+    <img src="/znaky/sk-hodkovice-nad-mohelkou.png" alt="">
+</div>
+
+    <p class="clanek-meta">So 7. 11. • 1. kolo • venku</p>
+    <h3>Skala – Hodkovice 2:5</h3>
+    <p class="clanek-perex">V posledním podzimním zápase jsme nestačili na Hodkovice, které nás na svém hřišti porazily 5:2.</p>
+    <span class="cist">Číst report →</span>
+</a>
+
+                <a class="clanek" href="/clanky/skala-harrachov-2-1/">
+    <div class="clanek-znaky">
+    <img src="/logo.png" alt="">
+    <span class="vysledek vyhra">2:1</span>
+    <img src="/znaky/tj-jiskra-harrachov.png" alt="">
+</div>
+
+    <p class="clanek-meta">Ne 1. 11. • 13. kolo • doma</p>
+    <h3>Skala – Harrachov 2:1</h3>
+    <p class="clanek-perex">V posledním domácím zápase podzimu jsme v deseti otočili utkání s Harrachovem a vyhráli 2:1 gólem v nastavení.</p>
+    <span class="cist">Číst report →</span>
+</a>
+
+                <a class="clanek" href="/clanky/skala-lucany-0-2/">
+    <div class="clanek-znaky">
+    <img src="/logo.png" alt="">
+    <span class="vysledek prohra">0:2</span>
+    <img src="/znaky/lucany.png" alt="">
+</div>
+
+    <p class="clanek-meta">So 24. 10. • 12. kolo • venku</p>
+    <h3>Skala – Lučany 0:2</h3>
+    <p class="clanek-perex">Z Lučan jsme odjeli bez bodu. Domácí vyhráli 2:0 a oba góly vstřelil Jaroslav Lietava.</p>
+    <span class="cist">Číst report →</span>
+</a>
+
+            </div>
+            <a class="odkaz vsechny-clanky" href="/clanky/">Všechny články →</a>
+        </div>
+    </section>
+
+    <!-- TABULKA A ZÁPASY -->
+    <section id="tabulka" class="sekce">
+        <div class="obsah">
+            <p class="nadtitulek">Sezona 2026/27 • po podzimní části</p>
+            <h2>7. liga <span class="cervena">VÝCHOD</span></h2>
+
+            <div class="dva-sloupce">
+
+                <!-- TABULKA -->
+                <div class="panel panel-tabulka">
+                    <h3>Tabulka</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th class="klub">Klub</th>
+                                <th>Z</th>
+                                <th>V</th>
+                                <th>R</th>
+                                <th>P</th>
+                                <th>Skóre</th>
+                                <th>B</th>
+                                <th>Forma</th>
+                            </tr>
+                        </thead>
+                        <!-- řádky tabulky doplní JavaScript z dat v administraci -->
+                        <tbody id="tabulka-radky"></tbody>
+                    </table>
+                    <p class="poznamka">Forma: posledních pět zápasů, nejnovější vlevo. V výhra, R remíza, P prohra.</p>
+                    <a class="odkaz" href="https://www.fotbal.cz/souteze/turnaje/hlavni/0ca536cd-8f38-4e0b-b412-e9cd75a0590f" target="_blank" rel="noopener">Kompletní tabulka na fotbal.cz →</a>
+                </div>
+
+                <!-- ZÁPASY -->
+                <div id="zapasy" class="panel panel-zapasy">
+                    <h3>Zápasy áčka</h3>
+                    <div class="prepinac">
+                        <button id="tlacitko-program" class="zalozka aktivni" onclick="prepni('program', 'vysledky')">Program</button>
+                        <button id="tlacitko-vysledky" class="zalozka" onclick="prepni('vysledky', 'program')">Výsledky</button>
+                    </div>
+
+                    <!-- seznamy zápasů doplní JavaScript z dat v administraci -->
+                    <div id="program"></div>
+                    <div id="vysledky" class="skryty"></div>
+                    <a class="odkaz" href="https://www.fotbal.cz/souteze/turnaje/zapas/0ca536cd-8f38-4e0b-b412-e9cd75a0590f" target="_blank" rel="noopener">Celý rozpis na fotbal.cz →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SOUPISKA: skládá se z dat v administraci (Soupiska) -->
+    <section id="tym" class="sekce">
+        <div class="obsah">
+            <p class="nadtitulek">Sezona 2026/27 • statistiky z podzimní části</p>
+            <h2>Soupiska <span class="cervena">A-týmu</span></h2>
+
+            <h3 class="skupina">Brankáři</h3>
+            <div class="mrizka">
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">18</span><span class="post">Brankář</span></div>
+                    <p class="jmeno">Miroslav Hlaváč</p>
+                    <div class="hrac-cisla">
+                        <div><strong>2</strong><span>zápasy</span></div>
+                        <div><strong>180</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>čistá konta</span></div>
+                    </div>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">29</span><span class="post">Brankář</span></div>
+                    <p class="jmeno">Daniel Mohr</p>
+                    <div class="hrac-cisla">
+                        <div><strong>11</strong><span>zápasy</span></div>
+                        <div><strong>990</strong><span>minuty</span></div>
+                        <div><strong>1</strong><span>čistá konta</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="skupina">Obránci</h3>
+            <div class="mrizka">
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">3</span><span class="post">Obránce</span></div>
+                    <p class="jmeno">Tomáš Rác</p>
+                    <div class="hrac-cisla">
+                        <div><strong>11</strong><span>zápasy</span></div>
+                        <div><strong>854</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                    <p class="karty"><span class="cervena-karta"></span>1</p>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">6</span><span class="post">Obránce</span></div>
+                    <p class="jmeno">Jan Konečný</p>
+                    <div class="hrac-cisla">
+                        <div><strong>11</strong><span>zápasy</span></div>
+                        <div><strong>785</strong><span>minuty</span></div>
+                        <div><strong>1</strong><span>góly</span></div>
+                    </div>
+                    <p class="karty"><span class="zluta"></span>1</p>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">8</span><span class="post">Obránce</span></div>
+                    <p class="jmeno">Jiří Jiskra</p>
+                    <div class="hrac-cisla">
+                        <div><strong>6</strong><span>zápasy</span></div>
+                        <div><strong>388</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">11</span><span class="post">Obránce</span></div>
+                    <p class="jmeno">Jiří Šilhán</p>
+                    <div class="hrac-cisla">
+                        <div><strong>9</strong><span>zápasy</span></div>
+                        <div><strong>794</strong><span>minuty</span></div>
+                        <div><strong>1</strong><span>góly</span></div>
+                    </div>
+                    <p class="karty"><span class="zluta"></span>1</p>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">14</span><span class="post">Obránce</span></div>
+                    <p class="jmeno">Zdeněk Cafourek</p>
+                    <div class="hrac-cisla">
+                        <div><strong>10</strong><span>zápasy</span></div>
+                        <div><strong>660</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="post">Obránce</span></div>
+                    <p class="jmeno">Martin Vít</p>
+                    <div class="hrac-cisla">
+                        <div><strong>5</strong><span>zápasy</span></div>
+                        <div><strong>201</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="post">Obránce</span></div>
+                    <p class="jmeno">Tomáš Kratochvíl</p>
+                    <div class="hrac-cisla">
+                        <div><strong>2</strong><span>zápasy</span></div>
+                        <div><strong>121</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="skupina">Záložníci</h3>
+            <div class="mrizka">
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">2</span><span class="post">Záložník</span></div>
+                    <p class="jmeno">Jan Krejčí</p>
+                    <div class="hrac-cisla">
+                        <div><strong>10</strong><span>zápasy</span></div>
+                        <div><strong>791</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                    <p class="karty"><span class="zluta"></span>4 <span class="cervena-karta"></span>1</p>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">4</span><span class="post">Záložník</span></div>
+                    <p class="jmeno">David Pařík</p>
+                    <div class="hrac-cisla">
+                        <div><strong>9</strong><span>zápasy</span></div>
+                        <div><strong>532</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                    <p class="karty"><span class="zluta"></span>1</p>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">5</span><span class="post">Záložník</span></div>
+                    <p class="jmeno">Jakub Mikez</p>
+                    <div class="hrac-cisla">
+                        <div><strong>11</strong><span>zápasy</span></div>
+                        <div><strong>426</strong><span>minuty</span></div>
+                        <div><strong>1</strong><span>góly</span></div>
+                    </div>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">7</span><span class="post">Záložník</span></div>
+                    <p class="jmeno">Zdeněk Kotrba</p>
+                    <div class="hrac-cisla">
+                        <div><strong>11</strong><span>zápasy</span></div>
+                        <div><strong>950</strong><span>minuty</span></div>
+                        <div><strong>1</strong><span>góly</span></div>
+                    </div>
+                    <p class="karty"><span class="zluta"></span>5</p>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">12</span><span class="post">Záložník</span></div>
+                    <p class="jmeno">Michal Matějíček</p>
+                    <div class="hrac-cisla">
+                        <div><strong>13</strong><span>zápasy</span></div>
+                        <div><strong>1&nbsp;085</strong><span>minuty</span></div>
+                        <div><strong>3</strong><span>góly</span></div>
+                    </div>
+                    <p class="karty"><span class="zluta"></span>2</p>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">13</span><span class="post">Záložník</span></div>
+                    <p class="jmeno">Jan Pešek</p>
+                    <div class="hrac-cisla">
+                        <div><strong>9</strong><span>zápasy</span></div>
+                        <div><strong>449</strong><span>minuty</span></div>
+                        <div><strong>2</strong><span>góly</span></div>
+                    </div>
+                    <p class="karty"><span class="zluta"></span>1</p>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">16</span><span class="post">Záložník</span></div>
+                    <p class="jmeno">Petr Hlava</p>
+                    <div class="hrac-cisla">
+                        <div><strong>3</strong><span>zápasy</span></div>
+                        <div><strong>66</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">17</span><span class="post">Záložník</span></div>
+                    <p class="jmeno">Ondřej Petr</p>
+                    <div class="hrac-cisla">
+                        <div><strong>11</strong><span>zápasy</span></div>
+                        <div><strong>928</strong><span>minuty</span></div>
+                        <div><strong>1</strong><span>góly</span></div>
+                    </div>
+                    <p class="karty"><span class="zluta"></span>2</p>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">19</span><span class="post">Záložník</span></div>
+                    <p class="jmeno">Jan Stránský</p>
+                    <div class="hrac-cisla">
+                        <div><strong>12</strong><span>zápasy</span></div>
+                        <div><strong>564</strong><span>minuty</span></div>
+                        <div><strong>3</strong><span>góly</span></div>
+                    </div>
+                    <p class="karty"><span class="zluta"></span>3</p>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="post">Záložník</span></div>
+                    <p class="jmeno">Šimon Mikez</p>
+                    <div class="hrac-cisla">
+                        <div><strong>6</strong><span>zápasy</span></div>
+                        <div><strong>248</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="skupina">Útočníci</h3>
+            <div class="mrizka">
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">9</span><span class="post">Útočník</span></div>
+                    <p class="jmeno">Dominik Plhal</p>
+                    <div class="hrac-cisla">
+                        <div><strong>8</strong><span>zápasy</span></div>
+                        <div><strong>676</strong><span>minuty</span></div>
+                        <div><strong>3</strong><span>góly</span></div>
+                    </div>
+                    <p class="karty"><span class="zluta"></span>3</p>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">10</span><span class="post">Útočník</span></div>
+                    <p class="jmeno">Leoš Plátek</p>
+                    <div class="hrac-cisla">
+                        <div><strong>7</strong><span>zápasy</span></div>
+                        <div><strong>606</strong><span>minuty</span></div>
+                        <div><strong>8</strong><span>góly</span></div>
+                    </div>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">15</span><span class="post">Útočník</span></div>
+                    <p class="jmeno">Alex Vondál</p>
+                    <div class="hrac-cisla">
+                        <div><strong>12</strong><span>zápasy</span></div>
+                        <div><strong>359</strong><span>minuty</span></div>
+                        <div><strong>3</strong><span>góly</span></div>
+                    </div>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">21</span><span class="post">Útočník</span></div>
+                    <p class="jmeno">Petr Srbek</p>
+                    <div class="hrac-cisla">
+                        <div><strong>3</strong><span>zápasy</span></div>
+                        <div><strong>47</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                    <p class="karty"><span class="zluta"></span>1</p>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="dres">23</span><span class="post">Útočník</span></div>
+                    <p class="jmeno">Ondřej Hapiak</p>
+                    <div class="hrac-cisla">
+                        <div><strong>1</strong><span>zápasy</span></div>
+                        <div><strong>6</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="post">Útočník</span></div>
+                    <p class="jmeno">Milan Drobný</p>
+                    <div class="hrac-cisla">
+                        <div><strong>2</strong><span>zápasy</span></div>
+                        <div><strong>84</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                </div>
+                <div class="hrac">
+                    <div class="hrac-hlava"><span class="post">Útočník</span></div>
+                    <p class="jmeno">Zdeněk Knobloch</p>
+                    <div class="hrac-cisla">
+                        <div><strong>2</strong><span>zápasy</span></div>
+                        <div><strong>111</strong><span>minuty</span></div>
+                        <div><strong>0</strong><span>góly</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REALIZAČNÍ TÝM -->
+            <div class="realizak">
+                <div><span>Trenéři</span><strong>Petr Srbek, Heřman Kubín</strong></div>
+                <div><span>Asistenti</span><strong>Jan Hrstka, Michal Porš</strong></div>
+                <div><span>Vedoucí týmu</span><strong>Petr Brožek</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AREÁL -->
+    <section id="areal" class="sekce">
+        <div class="obsah">
+            <p class="nadtitulek">Domácí hřiště • Malá Skála, část Labe</p>
+            <h2>Fotbalový <span class="cervena">areál</span></h2>
+
+            <div class="areal-vnitrek">
+
+                <!-- GALERIE SE ŠIPKAMI -->
+                <div class="galerie">
+                    <img class="fotka" src="/hriste.jpg" alt="Fotbalové hřiště SK Malá Skála">
+                    <img class="fotka skryty" src="/minigolf.jpg" alt="Minigolf v areálu SK Malá Skála">
+                    <img class="fotka skryty" src="/pohled.jpg" alt="Pohled na areál SK Malá Skála">
+                    <button class="sipka sipka-vlevo" onclick="posun(-1)" aria-label="Předchozí fotka">‹</button>
+                    <button class="sipka sipka-vpravo" onclick="posun(1)" aria-label="Další fotka">›</button>
+                    <p class="popisek" id="popisek">Fotbalové hřiště SK Malá Skála • 1 / 3</p>
+                </div>
+
+                <!-- INFORMACE -->
+                <div class="panel areal-info">
+                    <p class="areal-text">Domácí zápasy hrajeme v Malé Skále v části Labe, přímo u hlavní silnice naproti čerpací stanici, takže nás nemůžete minout. Auto zaparkujete přímo v areálu. V klubovně si dáte pivo, limonádu nebo klobásu a s dětmi si můžete zahrát i minigolf, který je součástí areálu. Přijďte na fotbal a zůstaňte na chvíli s námi.</p>
+                    <div class="udaj"><span>Adresa</span><strong>Labe 196, 468 22 Malá Skála</strong></div>
+                    <div class="udaj"><span>Jak nás najdete</span><strong>U hlavní silnice, naproti čerpací stanici</strong></div>
+                    <div class="udaj"><span>Vstupné</span><strong>Zdarma na zápasy áčka i béčka</strong></div>
+                    <div class="udaj"><span>Vlakem</span><strong>Ze stanice Malá Skála asi 1 km, zhruba 15 minut pěšky</strong></div>
+                    <div class="udaj"><span>Autobusem</span><strong>Ze zastávky Malá Skála, Vranové, u mlýna asi 800 metrů pěšky</strong></div>
+                    <div class="udaj"><span>Parkování</span><strong>Přímo v areálu</strong></div>
+                    <div class="udaj"><span>Klubovna</span><strong>V den zápasu od 45 minut před výkopem do zhruba hodiny po zápase. Když má otevřeno minigolf, je otevřená celý den.</strong></div>
+                    <div class="udaj"><span>Občerstvení</span><strong>Klubovna: pivo, limo, klobásy a další</strong></div>
+                    <div class="tlacitka">
+                        <a class="tlacitko" href="https://www.google.com/maps/search/?api=1&amp;query=Labe+196%2C+468+22+Mal%C3%A1+Sk%C3%A1la" target="_blank">Navigovat</a>
+                        <a class="tlacitko tlacitko-tmave" href="https://mapy.cz/zakladni?q=Labe%20196%2C%20Mal%C3%A1%20Sk%C3%A1la" target="_blank">Mapy.cz</a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- MINIGOLF A PRONÁJEM: upravuje se v administraci (Klub a kontakty) -->
+            <div class="panel minigolf">
+                <div class="minigolf-logo"><img src="/partneri/maloskalsky-minigolf.webp" alt="Maloskalský minigolf" loading="lazy"></div>
+                <div class="minigolf-text">
+                    <h3>Maloskalský minigolf</h3>
+                    <p class="areal-text">Minigolf a kiosek s občerstvením jsou přímo v našem areálu. Hraje se od května do září, přes zimu je zavřeno. Areál s minigolfem a kioskem si můžete pronajmout na teambuilding, oslavu nebo školní výlet.</p>
+                    <div class="tlacitka">
+                        <a class="tlacitko" href="https://maloskalskyminigolf.cz/" target="_blank" rel="noopener">Otevírací doba, ceny a rezervace</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT: kontakty se upravují v administraci (Klub) -->
+    <section id="kontakt" class="sekce">
+        <div class="obsah">
+            <p class="nadtitulek">Zavolejte nebo napište</p>
+            <h2>Kontakty <span class="cervena">klubu</span></h2>
+
+            <div class="mrizka">
+                <div class="kontakt">
+                    <p class="role">Předseda klubu</p>
+                    <p class="jmeno">Pavel Mikez</p>
+                    <a class="telefon" href="tel:+420602410611">+420 602 410 611</a>
+                    <a class="email" href="mailto:pavel@mikez.cz">pavel@mikez.cz</a>
+                </div>
+                <div class="kontakt">
+                    <p class="role">Trenér A-týmu</p>
+                    <p class="jmeno">Petr Srbek</p>
+                    <a class="telefon" href="tel:+420608761633">+420 608 761 633</a>
+                </div>
+                <div class="kontakt">
+                    <p class="role">Administrátor webu</p>
+                    <p class="jmeno">Daniel Mohr</p>
+                    <a class="telefon" href="tel:+420606751187">+420 606 751 187</a>
+                </div>
+                <div class="kontakt">
+                    <p class="role">Sledujte nás</p>
+                    <div class="socialni">
+                        <a class="tlacitko" href="https://www.facebook.com/profile.php?id=100035350881825" target="_blank" rel="noopener">Facebook</a>
+                        <a class="tlacitko tlacitko-tmave" href="https://www.instagram.com/sk_mala_skala/" target="_blank" rel="noopener">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DATA PRO TABULKU A ZÁPASY (z administrace) -->
+    <script>
+        var zaklad = "";
+        var nasTym = "Malá Skála";
+        var tabulka = [{"klub":"Albrechtice/Jiřetín","znak":"/znaky/albrechtice.png","z":13,"v":12,"r":1,"p":0,"skore":"45:11","body":37,"zmena":0,"forma":"VVVVV"},{"klub":"Turnov B","znak":"/znaky/turnovB.png","z":13,"v":10,"r":0,"p":3,"skore":"66:18","body":30,"zmena":0,"forma":"VVVPP"},{"klub":"Plavy","znak":"/znaky/plavy.png","z":13,"v":9,"r":0,"p":4,"skore":"42:24","body":27,"zmena":1,"forma":"VVVVV"},{"klub":"Lučany nad Nisou","znak":"/znaky/lucany.png","z":13,"v":8,"r":1,"p":4,"skore":"40:31","body":25,"zmena":-1,"forma":"PPVVV"},{"klub":"Železný Brod B","znak":"/znaky/zeleznybrodB.png","z":13,"v":8,"r":0,"p":5,"skore":"52:41","body":24,"zmena":0,"forma":"VPPPV"},{"klub":"Smržovka","znak":"/znaky/smrzovka.png","z":13,"v":7,"r":0,"p":6,"skore":"38:30","body":21,"zmena":0,"forma":"VPPPV"},{"klub":"Harrachov","znak":"/znaky/tj-jiskra-harrachov.png","z":13,"v":7,"r":0,"p":6,"skore":"32:27","body":21,"zmena":0,"forma":"VPVVV"},{"klub":"Hodkovice","znak":"/znaky/sk-hodkovice-nad-mohelkou.png","z":13,"v":6,"r":1,"p":6,"skore":"28:28","body":19,"zmena":1,"forma":"VVVVV"},{"klub":"Desná","znak":"/znaky/desna.png","z":13,"v":5,"r":2,"p":6,"skore":"19:30","body":17,"zmena":-1,"forma":"PVPVP"},{"klub":"Malá Skála","znak":"/znaky/mala-skala.png","z":13,"v":5,"r":1,"p":7,"skore":"27:39","body":16,"zmena":0,"forma":"PVPVP"},{"klub":"Jilemnice","znak":"/znaky/jilemnice.png","z":13,"v":4,"r":1,"p":8,"skore":"24:43","body":13,"zmena":0,"forma":"PPVPP"},{"klub":"Jenišovice","znak":"/znaky/jenisovice.png","z":13,"v":2,"r":2,"p":9,"skore":"17:40","body":8,"zmena":0,"forma":"PRPPP"},{"klub":"Rovensko pod Troskami","znak":"/znaky/rovensko.png","z":13,"v":1,"r":2,"p":10,"skore":"18:53","body":5,"zmena":0,"forma":"PRPPP"},{"klub":"Pěnčín B","znak":"/znaky/pencinB.png","z":13,"v":1,"r":1,"p":11,"skore":"15:48","body":4,"zmena":0,"forma":"PPPPP"}];
+        var zapasy = [{"datum":"2026-10-11","cas":"","kolo":"10. kolo","soutez":"7. liga VÝCHOD","souper":"Smržovka","znak":"/znaky/smrzovka.png","doma":true,"misto":"","pohar":false,"nase_goly":2,"goly_soupere":3},{"datum":"2026-10-18","cas":"","kolo":"11. kolo","soutez":"7. liga VÝCHOD","souper":"Pěnčín B","znak":"/znaky/pencinB.png","doma":false,"misto":"","pohar":false,"nase_goly":4,"goly_soupere":2},{"datum":"2026-10-24","cas":"15:00","kolo":"12. kolo","soutez":"7. liga VÝCHOD","souper":"Lučany nad Nisou","znak":"/znaky/lucany.png","doma":false,"misto":"","pohar":false,"nase_goly":0,"goly_soupere":2},{"datum":"2026-11-01","cas":"14:00","kolo":"13. kolo","soutez":"7. liga VÝCHOD","souper":"Harrachov","znak":"/znaky/tj-jiskra-harrachov.png","doma":true,"misto":"","pohar":false,"nase_goly":2,"goly_soupere":1},{"datum":"2026-11-07","cas":"10:00","kolo":"1. kolo","soutez":"7. liga VÝCHOD","souper":"Hodkovice","znak":"/znaky/sk-hodkovice-nad-mohelkou.png","doma":false,"misto":"","pohar":false,"nase_goly":2,"goly_soupere":5},{"datum":"2027-02-12","cas":"19:15","kolo":"MOL Cup","soutez":"skupina E","souper":"Turnov B","znak":"/znaky/turnovB.png","doma":true,"misto":"UMT Turnov","pohar":true,"nase_goly":null,"goly_soupere":null},{"datum":"2027-02-20","cas":"17:00","kolo":"MOL Cup","soutez":"skupina E","souper":"Sedmihorky","znak":"/znaky/sedmihorky.png","doma":false,"misto":"UMT Turnov","pohar":true,"nase_goly":null,"goly_soupere":null},{"datum":"2027-02-27","cas":"17:00","kolo":"MOL Cup","soutez":"skupina E","souper":"Sokol Pěnčín","znak":"/znaky/sokolpencin.png","doma":false,"misto":"UMT Turnov","pohar":true,"nase_goly":null,"goly_soupere":null},{"datum":"2027-03-21","cas":"15:00","kolo":"18. kolo","soutez":"7. liga VÝCHOD","souper":"Železný Brod B","znak":"/znaky/zeleznybrodB.png","doma":true,"misto":"","pohar":false,"nase_goly":null,"goly_soupere":null},{"datum":"2027-03-27","cas":"15:30","kolo":"19. kolo","soutez":"7. liga VÝCHOD","souper":"Plavy","znak":"/znaky/plavy.png","doma":false,"misto":"","pohar":false,"nase_goly":null,"goly_soupere":null},{"datum":"2027-04-04","cas":"16:30","kolo":"20. kolo","soutez":"7. liga VÝCHOD","souper":"Desná","znak":"/znaky/desna.png","doma":true,"misto":"","pohar":false,"nase_goly":null,"goly_soupere":null},{"datum":"2027-04-10","cas":"16:30","kolo":"21. kolo","soutez":"7. liga VÝCHOD","souper":"Jilemnice","znak":"/znaky/jilemnice.png","doma":false,"misto":"","pohar":false,"nase_goly":null,"goly_soupere":null},{"datum":"2027-04-18","cas":"17:00","kolo":"22. kolo","soutez":"7. liga VÝCHOD","souper":"Jenišovice","znak":"/znaky/jenisovice.png","doma":true,"misto":"","pohar":false,"nase_goly":null,"goly_soupere":null}];
+        var vstupne = "zdarma";
+        var klubovnaPred = 45;
+    </script>
+
+
+    <!-- PARTNEŘI (stejné na všech stránkách) -->
+
+    <section class="sekce partneri" aria-label="Partneři a sponzoři">
+        <div class="obsah">
+            <p class="nadtitulek">Děkujeme za podporu</p>
+            <h2>Partneři <span class="cervena">klubu</span></h2>
+            <div class="partneri-mrizka">
+                <a class="partner" href="https://www.rallycomponent.cz/" target="_blank" rel="noopener" title="Rally component s.r.o."><img src="/partneri/rally-component.webp" alt="Rally component s.r.o." loading="lazy"></a>
+                <a class="partner" href="https://bbkovo.cz/" target="_blank" rel="noopener" title="BB-KOVO dílna s.r.o."><img src="/partneri/bb-kovo.webp" alt="BB-KOVO dílna s.r.o." loading="lazy"></a>
+                <a class="partner partner-tmavy" href="https://www.benatska.cz/" target="_blank" rel="noopener" title="Benátská! s Impulsem"><img src="/partneri/benatska.webp" alt="Benátská! s Impulsem" loading="lazy"></a>
+                <a class="partner" href="https://www.kvfinal.cz/" target="_blank" rel="noopener" title="KV Final"><img src="/partneri/kv-final.webp" alt="KV Final" loading="lazy"></a>
+                <a class="partner" href="https://www.maloskalsky-pivovar.cz/cs" target="_blank" rel="noopener" title="Maloskalský pivovar"><img src="/partneri/maloskalsky-pivovar.webp" alt="Maloskalský pivovar" loading="lazy"></a>
+                <a class="partner" href="https://maloskalskyminigolf.cz/" target="_blank" rel="noopener" title="Maloskalský minigolf"><img src="/partneri/maloskalsky-minigolf.webp" alt="Maloskalský minigolf" loading="lazy"></a>
+                <a class="partner" href="https://www.mala-skala.cz/" target="_blank" rel="noopener" title="Obec Malá Skála"><img src="/partneri/obec-mala-skala.webp" alt="Obec Malá Skála" loading="lazy"></a>
+                <a class="partner" href="https://www.rekuper.cz/" target="_blank" rel="noopener" title="Rekuper"><img src="/partneri/rekuper.webp" alt="Rekuper" loading="lazy"></a>
+                <a class="partner" href="https://www.zikuda.cz/" target="_blank" rel="noopener" title="Zikuda vodohospodářské stavby"><img src="/partneri/zikuda.webp" alt="Zikuda vodohospodářské stavby" loading="lazy"></a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PATIČKA -->
+    <footer>
+        <div class="obsah">
+            <div class="paticka">
+                <img src="/logo.png" alt="Logo SK Malá Skála">
+                <div class="paticka-text"><strong>SK Malá Skála</strong><br>Labe 196, 468 22 Malá Skála</div>
+                <div class="paticka-odkazy">
+                    <a href="https://www.facebook.com/profile.php?id=100035350881825" target="_blank" rel="noopener">Facebook</a>
+                    <a href="https://www.instagram.com/sk_mala_skala/" target="_blank" rel="noopener">Instagram</a>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Daniel Mohr • Web vytvořil Daniel Mohr • Všechna práva vyhrazena</p>
+        </div>
+    </footer>
+
+    <script src="/assets/skript.js?v=1795818484"></script>
+</body>
+</html>
