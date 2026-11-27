@@ -10,21 +10,70 @@
   "treneri": "Petr Srbek, Heřman Kubín",
   "asistenti": "Jan Hrstka, Michal Porš",
   "vedouci": "Petr Brožek",
+  "vstupne": "zdarma",
+  "klubovna_pred_zapasem": 45,
+  "areal_text": "Domácí zápasy hrajeme v Malé Skále v části Labe, přímo u hlavní silnice naproti čerpací stanici, takže nás nemůžete minout. Auto zaparkujete přímo v areálu. V klubovně si dáte pivo, limonádu nebo klobásu a s dětmi si můžete zahrát i minigolf, který je součástí areálu. Přijďte na fotbal a zůstaňte na chvíli s námi.",
+  "areal_udaje": [
+    {
+      "nazev": "Adresa",
+      "hodnota": "Labe 196, 468 22 Malá Skála"
+    },
+    {
+      "nazev": "Jak nás najdete",
+      "hodnota": "U hlavní silnice, naproti čerpací stanici"
+    },
+    {
+      "nazev": "Vstupné",
+      "hodnota": "Zdarma na zápasy áčka i béčka"
+    },
+    {
+      "nazev": "Vlakem",
+      "hodnota": "Ze stanice Malá Skála asi 1 km, zhruba 15 minut pěšky"
+    },
+    {
+      "nazev": "Autobusem",
+      "hodnota": "Ze zastávky Malá Skála, Vranové, u mlýna asi 800 metrů pěšky"
+    },
+    {
+      "nazev": "Parkování",
+      "hodnota": "Přímo v areálu"
+    },
+    {
+      "nazev": "Klubovna",
+      "hodnota": "V den zápasu od 45 minut před výkopem do zhruba hodiny po zápase. Když má otevřeno minigolf, je otevřená celý den."
+    },
+    {
+      "nazev": "Občerstvení",
+      "hodnota": "Klubovna: pivo, limo, klobásy a další"
+    }
+  ],
+  "minigolf": {
+    "nazev": "Maloskalský minigolf",
+    "logo": "/partneri/maloskalsky-minigolf.webp",
+    "text": "Minigolf a kiosek s občerstvením jsou přímo v našem areálu. Hraje se od května do září, přes zimu je zavřeno. Areál s minigolfem a kioskem si můžete pronajmout na teambuilding, oslavu nebo školní výlet.",
+    "oteviraci_doba": "",
+    "ceny": "",
+    "odkaz": "https://maloskalskyminigolf.cz/",
+    "odkaz_text": "Otevírací doba, ceny a rezervace"
+  },
   "kontakty": [
     {
       "funkce": "Předseda klubu",
       "jmeno": "Pavel Mikez",
-      "telefon": "+420 602 410 611"
+      "telefon": "+420 602 410 611",
+      "email": "pavel@mikez.cz"
     },
     {
       "funkce": "Trenér A-týmu",
       "jmeno": "Petr Srbek",
-      "telefon": "+420 608 761 633"
+      "telefon": "+420 608 761 633",
+      "email": ""
     },
     {
       "funkce": "Administrátor webu",
       "jmeno": "Daniel Mohr",
-      "telefon": "+420 606 751 187"
+      "telefon": "+420 606 751 187",
+      "email": ""
     }
   ]
 }

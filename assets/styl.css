@@ -622,6 +622,53 @@ td {
     margin-bottom: 4px;
 }
 
+/* minigolf a pronájem areálu (pod fotkami a údaji) */
+.minigolf {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+.minigolf-logo {
+    flex: 0 0 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 14px;
+    padding: 18px;
+}
+.minigolf-logo img {
+    max-width: 100%;
+    max-height: 140px;
+    object-fit: contain;
+}
+.minigolf-text {
+    flex: 1;
+}
+.minigolf h3 {
+    font-size: 36px;
+    margin: 0 0 10px 0;
+}
+.minigolf .areal-text {
+    margin-bottom: 10px;
+}
+.minigolf .tlacitka {
+    margin-top: 16px;
+}
+
+/* řádek pod kartou příštího domácího zápasu: vstupné a klubovna */
+.info-divaci {
+    display: inline-block;
+    margin: 14px 0 0 0;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background-color: rgba(221, 34, 29, 0.15);
+    color: #f2f3f5;
+    font-size: 14px;
+    font-weight: bold;
+}
+
 /* KONTAKT */
 .kontakt {
     background-color: #1b1d22;
@@ -645,6 +692,16 @@ td {
     font-weight: bold;
 }
 .telefon:hover {
+    color: #dd221d;
+}
+.kontakt .email {
+    display: block;
+    margin-top: 6px;
+    color: #c9ccd1;
+    font-size: 15px;
+    word-break: break-all;
+}
+.kontakt .email:hover {
     color: #dd221d;
 }
 .socialni {
@@ -894,6 +951,43 @@ h4 {
     font-weight: bold;
     text-transform: uppercase;
     margin: 16px 0 4px 0;
+}
+
+/* PARTNEŘI (pruh s logy nad patičkou na každé stránce) */
+.partneri {
+    border-top: 1px solid #2a2d33;
+}
+.partneri h2 {
+    font-size: 48px;
+}
+.partneri-mrizka {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 16px;
+}
+.partner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 110px;
+    padding: 14px 18px;
+    background-color: white;
+    border: 2px solid transparent;
+    border-radius: 14px;
+    transition: transform 0.15s, border-color 0.15s;
+}
+.partner-tmavy {
+    background-color: #1b1d22;
+    border-color: #2a2d33;
+}
+a.partner:hover {
+    transform: translateY(-3px);
+    border-color: #dd221d;
+}
+.partner img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 /* PATIČKA */
@@ -1159,6 +1253,35 @@ a.clanek {
 
 /* MOBIL (do 600 px) */
 @media (max-width: 600px) {
+
+    /* minigolf: logo nad textem */
+    .minigolf {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+    .minigolf-logo {
+        flex: none;
+    }
+    .minigolf-logo img {
+        max-height: 100px;
+    }
+    .minigolf h3 {
+        font-size: 30px;
+    }
+
+    /* partneři: dvě loga vedle sebe, menší dlaždice */
+    .partneri h2 {
+        font-size: 40px;
+    }
+    .partneri-mrizka {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .partner {
+        height: 86px;
+        padding: 10px 12px;
+    }
 
     /* červený pruh: jen soutěž, sociální sítě jsou dole v kontaktech */
     .pruh-vnitrek {

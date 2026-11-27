@@ -1,0 +1,58 @@
+{
+  "partneri": [
+    {
+      "nazev": "Rally component s.r.o.",
+      "logo": "/partneri/rally-component.webp",
+      "odkaz": "https://www.rallycomponent.cz/",
+      "tmave_pozadi": false
+    },
+    {
+      "nazev": "BB-KOVO dílna s.r.o.",
+      "logo": "/partneri/bb-kovo.webp",
+      "odkaz": "https://bbkovo.cz/",
+      "tmave_pozadi": false
+    },
+    {
+      "nazev": "Benátská! s Impulsem",
+      "logo": "/partneri/benatska.webp",
+      "odkaz": "https://www.benatska.cz/",
+      "tmave_pozadi": true
+    },
+    {
+      "nazev": "KV Final",
+      "logo": "/partneri/kv-final.webp",
+      "odkaz": "https://www.kvfinal.cz/",
+      "tmave_pozadi": false
+    },
+    {
+      "nazev": "Maloskalský pivovar",
+      "logo": "/partneri/maloskalsky-pivovar.webp",
+      "odkaz": "https://www.maloskalsky-pivovar.cz/cs",
+      "tmave_pozadi": false
+    },
+    {
+      "nazev": "Maloskalský minigolf",
+      "logo": "/partneri/maloskalsky-minigolf.webp",
+      "odkaz": "https://maloskalskyminigolf.cz/",
+      "tmave_pozadi": false
+    },
+    {
+      "nazev": "Obec Malá Skála",
+      "logo": "/partneri/obec-mala-skala.webp",
+      "odkaz": "https://www.mala-skala.cz/",
+      "tmave_pozadi": false
+    },
+    {
+      "nazev": "Rekuper",
+      "logo": "/partneri/rekuper.webp",
+      "odkaz": "https://www.rekuper.cz/",
+      "tmave_pozadi": false
+    },
+    {
+      "nazev": "Zikuda vodohospodářské stavby",
+      "logo": "/partneri/zikuda.webp",
+      "odkaz": "https://www.zikuda.cz/",
+      "tmave_pozadi": false
+    }
+  ]
+}

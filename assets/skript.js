@@ -323,10 +323,46 @@ function kartaZapasu(zapas, uprostred) {
            '<p class="kdy">' + kdy + "</p>";
 }
 
+// čas "15:30" posunutý o zadaný počet minut dopředu, např. o 45 → "14:45"
+function casPred(cas, minuty) {
+    var casti = String(cas).split(":");
+    var celkem = parseInt(casti[0], 10) * 60 + parseInt(casti[1], 10) - minuty;
+    if (isNaN(celkem) || celkem < 0) {
+        return "";
+    }
+    var h = Math.floor(celkem / 60);
+    var m = celkem % 60;
+    return h + ":" + (m < 10 ? "0" : "") + m;
+}
+
+// řádek pod kartou domácího zápasu: vstupné a kdy otvírá klubovna
+// (jen u zápasu na našem hřišti, ne u pohárů na cizím hřišti)
+function infoProDivaky(zapas) {
+    if (!zapas.doma || zapas.misto) {
+        return "";
+    }
+    var casti = [];
+    var vstup = (typeof vstupne === "string") ? vstupne.trim() : "";
+    if (vstup) {
+        casti.push(vstup.toLowerCase() === "zdarma" ? "Vstup zdarma" : "Vstupné " + vstup);
+    }
+    var minuty = parseInt(typeof klubovnaPred !== "undefined" ? klubovnaPred : "", 10);
+    if (zapas.cas && !isNaN(minuty)) {
+        var od = casPred(zapas.cas, minuty);
+        if (od) {
+            casti.push("klubovna od " + od);
+        }
+    }
+    if (casti.length === 0) {
+        return "";
+    }
+    return '<p class="info-divaci">' + casti.join(" • ") + "</p>";
+}
+
 function vykresliUvod(nadchazejici, vysledky) {
     // příští zápas = první zápas, jehož týden ještě neskončil
     if (nadchazejici.length > 0) {
-        document.getElementById("pristi").innerHTML = kartaZapasu(nadchazejici[0], '<div class="vs">VS</div>');
+        document.getElementById("pristi").innerHTML = kartaZapasu(nadchazejici[0], '<div class="vs">VS</div>') + infoProDivaky(nadchazejici[0]);
     } else {
         document.getElementById("pristi").innerHTML = '<p class="kdy">Další zápasy zatím nejsou v programu.</p>';
     }

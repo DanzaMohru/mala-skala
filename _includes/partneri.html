@@ -1,0 +1,26 @@
+{%- comment -%}
+  Pruh s logy partnerů a sponzorů. Je na každé stránce nad patičkou.
+  Data jsou v _data/partneri.json (v administraci: Partneři a sponzoři).
+  Partner bez loga se nezobrazí, partner bez odkazu má logo bez odkazu.
+{%- endcomment -%}
+{%- assign partneri = site.data.partneri.partneri -%}
+{%- if partneri and partneri.size > 0 %}
+    <section class="sekce partneri" aria-label="Partneři a sponzoři">
+        <div class="obsah">
+            <p class="nadtitulek">Děkujeme za podporu</p>
+            <h2>Partneři <span class="cervena">klubu</span></h2>
+            <div class="partneri-mrizka">
+{%- for p in partneri %}
+{%- if p.logo and p.logo != "" %}
+{%- capture trida %}partner{% if p.tmave_pozadi %} partner-tmavy{% endif %}{% endcapture %}
+{%- if p.odkaz and p.odkaz != "" %}
+                <a class="{{ trida }}" href="{{ p.odkaz }}" target="_blank" rel="noopener" title="{{ p.nazev | escape }}"><img src="{{ p.logo | relative_url }}" alt="{{ p.nazev | escape }}" loading="lazy"></a>
+{%- else %}
+                <div class="{{ trida }}" title="{{ p.nazev | escape }}"><img src="{{ p.logo | relative_url }}" alt="{{ p.nazev | escape }}" loading="lazy"></div>
+{%- endif %}
+{%- endif %}
+{%- endfor %}
+            </div>
+        </div>
+    </section>
+{%- endif %}

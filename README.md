@@ -12,7 +12,8 @@ Správce obsahu se přihlásí na **app.pagescms.org** (odkazem z pozvánky v e-
 - **Zápasy (program a výsledky)**: všechny zápasy áčka v jednom seznamu. Po zápase stačí otevřít zápas a doplnit góly, web ho sám přesune z programu do výsledků. Pořadí v seznamu nevadí.
 - **Tabulka 7. ligy**: pořadí a čísla podle fotbal.cz.
 - **Soupiska a statistiky**: hráči a jejich čísla.
-- **Klub a kontakty**: realizační tým, telefony, odkazy.
+- **Klub a kontakty**: realizační tým, telefony a e-maily, odkazy, vstupné, údaje o areálu pro diváky (cesta vlakem a autobusem, klubovna…) a blok minigolfu. Vstupné a čas otevření klubovny se ukazují i pod kartou příštího domácího zápasu.
+- **Partneři a sponzoři**: loga v pruhu nad patičkou na každé stránce. Nové logo nahraj v Médiích do Loga partnerů, u světlého loga zaškrtni Tmavé pozadí.
 
 Po uložení se web sám přestaví a změna je vidět asi do dvou minut.
 
@@ -30,10 +31,11 @@ Po uložení se web sám přestaví a změna je vidět asi do dvou minut.
 | `_layouts/` | šablona stránky a šablona článku |
 | `_includes/` | menší kousky šablon (karta článku, infobox…) |
 | `_posts/` | články, jeden soubor = jeden článek |
-| `_data/` | tabulka, zápasy, soupiska, klub (JSON) |
+| `_data/` | tabulka, zápasy, soupiska, klub, partneři (JSON) |
 | `assets/` | styly (`styl.css`), skript (`skript.js`) a písma (`fonts/`, uložená u webu, nestahují se od Googlu) |
 | `fotky/` | fotky nahrané v administraci |
 | `znaky/` | znaky klubů |
+| `partneri/` | loga partnerů a sponzorů |
 | `.pages.yml` | nastavení formulářů v administraci |
 
 Adresu webu (včetně vlastní domény) si web zjistí sám, při přechodu na doménu se v kódu nic měnit nemusí.
