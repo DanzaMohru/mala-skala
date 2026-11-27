@@ -1,0 +1,26 @@
+name: Zkušební sestavení (náhled)
+on:
+  push:
+    branches: [nahled-zmeny]
+permissions:
+  contents: write
+jobs:
+  sestav:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Uložit sestavený web do větve nahled
+        run: |
+          cd _site
+          sudo chown -R $(id -u):$(id -g) .
+          git init -q
+          git config user.name "nahled"
+          git config user.email "nahled@example.com"
+          git checkout -q -b nahled
+          git add -A
+          git commit -q -m "Náhled ${GITHUB_SHA}"
+          git push -q -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" nahled

@@ -194,12 +194,14 @@ layout: zaklad
 
                 <!-- INFORMACE -->
                 <div class="panel areal-info">
-                    <p class="areal-text">Domácí zápasy hrajeme v Malé Skále v části Labe, přímo u hlavní silnice naproti čerpací stanici, takže nás nemůžete minout. Auto zaparkujete přímo v areálu. V klubovně si dáte pivo, limonádu nebo klobásu a s dětmi si můžete zahrát i minigolf, který je součástí areálu. Přijďte na fotbal a zůstaňte na chvíli s námi.</p>
-                    <div class="udaj"><span>Adresa</span><strong>Labe 196, 468 22 Malá Skála</strong></div>
-                    <div class="udaj"><span>Jak nás najdete</span><strong>U hlavní silnice, naproti čerpací stanici</strong></div>
-                    <div class="udaj"><span>Parkování</span><strong>Přímo v areálu</strong></div>
-                    <div class="udaj"><span>Občerstvení</span><strong>Klubovna: pivo, limo, klobásy a další</strong></div>
-                    <div class="udaj"><span>Pro rodiny</span><strong>Minigolf v areálu</strong></div>
+{%- if klub.areal_text and klub.areal_text != "" %}
+                    <p class="areal-text">{{ klub.areal_text }}</p>
+{%- endif %}
+{%- for u in klub.areal_udaje %}
+{%- if u.nazev and u.nazev != "" %}
+                    <div class="udaj"><span>{{ u.nazev }}</span><strong>{{ u.hodnota }}</strong></div>
+{%- endif %}
+{%- endfor %}
                     <div class="tlacitka">
                         <a class="tlacitko" href="https://www.google.com/maps/search/?api=1&amp;query=Labe+196%2C+468+22+Mal%C3%A1+Sk%C3%A1la" target="_blank">Navigovat</a>
                         <a class="tlacitko tlacitko-tmave" href="https://mapy.cz/zakladni?q=Labe%20196%2C%20Mal%C3%A1%20Sk%C3%A1la" target="_blank">Mapy.cz</a>
@@ -207,6 +209,31 @@ layout: zaklad
                 </div>
 
             </div>
+
+{%- assign mg = klub.minigolf %}
+{%- if mg and mg.text and mg.text != "" %}
+            <!-- MINIGOLF A PRONÁJEM: upravuje se v administraci (Klub a kontakty) -->
+            <div class="panel minigolf">
+{%- if mg.logo and mg.logo != "" %}
+                <div class="minigolf-logo"><img src="{{ mg.logo | relative_url }}" alt="{{ mg.nazev | escape }}" loading="lazy"></div>
+{%- endif %}
+                <div class="minigolf-text">
+                    <h3>{{ mg.nazev }}</h3>
+                    <p class="areal-text">{{ mg.text }}</p>
+{%- if mg.oteviraci_doba and mg.oteviraci_doba != "" %}
+                    <div class="udaj"><span>Otevírací doba</span><strong>{{ mg.oteviraci_doba | newline_to_br }}</strong></div>
+{%- endif %}
+{%- if mg.ceny and mg.ceny != "" %}
+                    <div class="udaj"><span>Ceny</span><strong>{{ mg.ceny | newline_to_br }}</strong></div>
+{%- endif %}
+{%- if mg.odkaz and mg.odkaz != "" %}
+                    <div class="tlacitka">
+                        <a class="tlacitko" href="{{ mg.odkaz }}" target="_blank" rel="noopener">{% if mg.odkaz_text and mg.odkaz_text != "" %}{{ mg.odkaz_text }}{% else %}Web minigolfu{% endif %}</a>
+                    </div>
+{%- endif %}
+                </div>
+            </div>
+{%- endif %}
         </div>
     </section>
 
@@ -221,7 +248,12 @@ layout: zaklad
                 <div class="kontakt">
                     <p class="role">{{ k.funkce }}</p>
                     <p class="jmeno">{{ k.jmeno }}</p>
+{%- if k.telefon and k.telefon != "" %}
                     <a class="telefon" href="tel:{{ k.telefon | remove: ' ' }}">{{ k.telefon }}</a>
+{%- endif %}
+{%- if k.email and k.email != "" %}
+                    <a class="email" href="mailto:{{ k.email }}">{{ k.email }}</a>
+{%- endif %}
                 </div>
 {%- endfor %}
                 <div class="kontakt">
@@ -241,4 +273,6 @@ layout: zaklad
         var nasTym = {{ klub.nas_tym | jsonify }};
         var tabulka = {{ site.data.tabulka.kluby | jsonify }};
         var zapasy = {{ site.data.zapasy.zapasy | jsonify }};
+        var vstupne = {{ klub.vstupne | default: "" | jsonify }};
+        var klubovnaPred = {{ klub.klubovna_pred_zapasem | default: "" | jsonify }};
     </script>

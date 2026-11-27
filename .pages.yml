@@ -17,6 +17,12 @@ media:
     output: /znaky
     categories: [image]
     rename: safe
+  - name: partneri
+    label: Loga partnerů
+    input: partneri
+    output: /partneri
+    categories: [image]
+    rename: safe
 
 content:
 
@@ -320,6 +326,63 @@ content:
       - name: vedouci
         label: Vedoucí týmu
         type: string
+      - name: vstupne
+        label: Vstupné na domácí zápasy
+        type: string
+        description: "Např. zdarma nebo 50 Kč. Ukáže se pod kartou příštího domácího zápasu."
+      - name: klubovna_pred_zapasem
+        label: Klubovna otvírá před výkopem (minuty)
+        type: number
+        description: "Např. 45. Pod kartou příštího domácího zápasu se z toho dopočítá čas, třeba klubovna od 14:45. Když necháš prázdné, čas se neukáže."
+      - name: areal_text
+        label: Areál – úvodní text
+        type: text
+      - name: areal_udaje
+        label: Areál – údaje pro diváky
+        description: "Řádky v sekci Areál (adresa, cesta vlakem a autobusem, vstupné, klubovna…). Pořadí jde měnit přetažením."
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nazev}"
+        fields:
+          - name: nazev
+            label: Nadpis
+            type: string
+            description: "Krátce, např. Vlakem"
+          - name: hodnota
+            label: Text
+            type: string
+      - name: minigolf
+        label: Minigolf a pronájem areálu
+        type: object
+        fields:
+          - name: nazev
+            label: Nadpis
+            type: string
+          - name: logo
+            label: Logo
+            type: image
+            options:
+              media: partneri
+          - name: text
+            label: Text
+            type: text
+            description: "Když je prázdný, celý blok minigolfu se na webu skryje."
+          - name: oteviraci_doba
+            label: Otevírací doba
+            type: text
+            description: "Nepovinné. Každé období na nový řádek. Když je prázdné, na webu se neukáže a lidé ji najdou přes odkaz na web minigolfu."
+          - name: ceny
+            label: Ceny
+            type: text
+            description: "Nepovinné. Každá cena na nový řádek."
+          - name: odkaz
+            label: Odkaz na web minigolfu
+            type: string
+          - name: odkaz_text
+            label: Text tlačítka
+            type: string
       - name: kontakty
         label: Kontakty
         type: object
@@ -338,3 +401,42 @@ content:
             label: Telefon
             type: string
             description: "Např. +420 602 410 611"
+          - name: email
+            label: E-mail
+            type: string
+            description: "Nepovinné."
+
+  # ------------------------------------------------------------------
+  - name: partneri
+    label: Partneři a sponzoři
+    type: file
+    path: _data/partneri.json
+    format: json
+    description: "Loga v pruhu nad patičkou na každé stránce. Pořadí jde měnit přetažením. Logo nahraj ideálně bez velkých okrajů, nejlépe PNG nebo WebP s průhledným pozadím."
+    fields:
+      - name: partneri
+        label: Partneři
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nazev}"
+        fields:
+          - name: nazev
+            label: Název firmy
+            type: string
+            required: true
+          - name: logo
+            label: Logo
+            type: image
+            required: true
+            options:
+              media: partneri
+          - name: odkaz
+            label: Odkaz na web
+            type: string
+            description: "Celá adresa včetně https://, např. https://www.rekuper.cz/. Když necháš prázdné, logo bude bez odkazu."
+          - name: tmave_pozadi
+            label: Tmavé pozadí
+            type: boolean
+            description: "Zaškrtni jen u loga se světlým nebo bílým nápisem, které by na bílé dlaždici nebylo vidět."
